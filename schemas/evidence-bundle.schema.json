@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Aoye-3/GameMakerAgent/schemas/evidence-bundle.schema.json",
+  "title": "GameMaker Evidence Bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "evidence_id",
+    "source",
+    "toolchain",
+    "scenario",
+    "input_trace",
+    "observations",
+    "assertions",
+    "diagnostics",
+    "artifacts",
+    "timing",
+    "review"
+  ],
+  "properties": {
+    "schema_version": { "const": "0.1" },
+    "evidence_id": { "type": "string", "minLength": 1 },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "revision"],
+      "properties": {
+        "repository": { "type": "string", "minLength": 1 },
+        "revision": { "type": "string", "minLength": 1 },
+        "dirty": { "type": "boolean", "default": false }
+      }
+    },
+    "toolchain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["framework", "runtime_adapter", "engine"],
+      "properties": {
+        "framework": { "type": "string", "minLength": 1 },
+        "runtime_adapter": { "type": "string", "minLength": 1 },
+        "engine": { "type": "string", "minLength": 1 },
+        "control_provider": { "type": "string" }
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "required": ["id", "goal"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "goal": { "type": "string", "minLength": 1 },
+        "initial_conditions": { "type": "object" }
+      }
+    },
+    "input_trace": { "type": "array", "items": { "type": "object" } },
+    "observations": {
+      "type": "object",
+      "required": ["before", "after"],
+      "properties": {
+        "before": { "type": "object" },
+        "after": { "type": "object" }
+      }
+    },
+    "assertions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["description", "passed"],
+        "properties": {
+          "description": { "type": "string", "minLength": 1 },
+          "passed": { "type": "boolean" },
+          "details": {}
+        }
+      }
+    },
+    "diagnostics": {
+      "type": "object",
+      "required": ["errors", "warnings"],
+      "properties": {
+        "errors": { "type": "array", "items": { "type": "object" } },
+        "warnings": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["kind", "path"],
+        "properties": {
+          "kind": { "enum": ["screenshot", "log", "profile", "trace", "other"] },
+          "path": { "type": "string", "minLength": 1 },
+          "runtime_marker": { "type": ["string", "integer"] }
+        }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "required": ["started_at", "finished_at"],
+      "properties": {
+        "started_at": { "type": "string", "format": "date-time" },
+        "finished_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "review": {
+      "type": "object",
+      "required": ["reviewer", "verdict"],
+      "properties": {
+        "reviewer": { "type": "string", "minLength": 1 },
+        "verdict": { "enum": ["pass", "fail", "insufficient_evidence"] },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}
