@@ -10,3 +10,4 @@
 | [ADR-002](ADR-002-native-godot-project-and-replaceable-control-adapter.md) | Accepted | 原生 Godot 项目是真实源，MCP 位于可替换控制适配层 |
 | [ADR-003](ADR-003-project-incubated-agent-enhancement-layer.md) | Accepted | 在项目 `.vibegame` 孵化 Agent 增强层，再晋升到 GameMakerAgent |
 | [ADR-004](ADR-004-production-bridge-and-godot-native-source-of-truth.md) | Accepted | 以 Production Bridge 连接玩法、素材生产与 Godot 原生实现 |
+| [ADR-005](ADR-005-framework-local-lab-before-game-project.md) | Accepted | GameJam 前先在框架本地 Lab 搭建并测试通用底座 |

@@ -1,0 +1,4 @@
+.tools/
+artifacts/
+lab/fixtures/**/.godot/
+lab/fixtures/**/.import/

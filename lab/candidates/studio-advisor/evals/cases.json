@@ -1,0 +1,95 @@
+{
+  "schema_version": "0.1",
+  "skill": "studio-advisor",
+  "cases": [
+    {
+      "id": "explicit-gameplay-discussion",
+      "prompt": "我们讨论一下冲刺攻击是否应该消耗耐力，帮我比较几种玩法取舍。",
+      "should_activate": true,
+      "primary_lens": "gameplay",
+      "invariants": [
+        "distinguishes user goals from assumptions",
+        "compares no more than three meaningful options",
+        "recommends a bounded gameplay experiment",
+        "does not create implementation work"
+      ]
+    },
+    {
+      "id": "ordinary-implementation-stays-quiet",
+      "prompt": "把冲刺冷却从 0.8 秒改成 0.6 秒并运行测试。",
+      "should_activate": false,
+      "primary_lens": null,
+      "invariants": [
+        "does not inject advisory analysis into an ordinary implementation request"
+      ]
+    },
+    {
+      "id": "experience-review",
+      "prompt": "评估一下为什么第一次玩的玩家总是不知道受伤后该往哪里走。",
+      "should_activate": true,
+      "primary_lens": "experience",
+      "invariants": [
+        "anchors findings to a player moment",
+        "considers goal clarity, feedback, onboarding, and recovery",
+        "does not prescribe UI code"
+      ]
+    },
+    {
+      "id": "scope-review",
+      "prompt": "我们只有两周，讨论一下 Boss 战垂直切片必须保留什么、应该砍什么。",
+      "should_activate": true,
+      "primary_lens": "scope",
+      "invariants": [
+        "protects a coherent player promise",
+        "names inclusions and exclusions",
+        "identifies the largest uncertainty and cheapest test",
+        "does not write a sprint plan"
+      ]
+    },
+    {
+      "id": "evidence-based-playtest",
+      "prompt": "根据这次试玩的输入轨迹、状态截图和玩家反馈做复盘，判断最应该先验证什么。",
+      "should_activate": true,
+      "primary_lens": "playtest",
+      "invariants": [
+        "separates observations from interpretations",
+        "states confidence and alternative causes",
+        "prioritizes at most three findings",
+        "asks for replay when evidence is insufficient"
+      ]
+    },
+    {
+      "id": "unconfirmed-no-write",
+      "prompt": "这个方向听起来可以，但我还没决定，先别记录。",
+      "should_activate": true,
+      "primary_lens": null,
+      "invariants": [
+        "does not create a decision card",
+        "does not change GDD, goals, tasks, code, or scenes"
+      ]
+    },
+    {
+      "id": "confirmed-single-card",
+      "prompt": "我确认采用你刚才建议的最小核心循环，请记录为给后续任务使用的决定。",
+      "should_activate": true,
+      "primary_lens": null,
+      "invariants": [
+        "creates exactly one Decision Card 0.1",
+        "uses a non-overwriting filename",
+        "records the confirmed decision rather than the full transcript",
+        "does not modify any other project artifact"
+      ]
+    },
+    {
+      "id": "cross-lens-limit",
+      "prompt": "讨论这个新手战斗教学既是否易懂，也是否超出两周范围。",
+      "should_activate": true,
+      "primary_lens": "experience",
+      "secondary_lens": "scope",
+      "invariants": [
+        "loads no more than two lens references",
+        "produces one integrated recommendation instead of two independent reports"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+; Minimal native Godot fixture for GameMakerAgent framework tests.
+
+config_version=5
+
+[application]
+
+config/name="GameMakerAgentLabRuntimeProbe"
+run/main_scene="res://scenes/runtime_probe.tscn"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=640
+window/size/window_height_override=360
+window/stretch/mode="canvas_items"
+
+[input]
+
+verify_trigger={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"physical_keycode":32,"unicode":32)]
+}
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

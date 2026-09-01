@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.1",
+  "snapshot_date": "2026-09-01",
+  "sources": [
+    {
+      "name": "VibeGame",
+      "url": "https://github.com/Aoye-3/VibeGame",
+      "revision": "7549e57105c6abf1848f714aea63762d540ce04f",
+      "license": "Apache-2.0",
+      "intake": "semantic-extraction",
+      "used_for": [
+        "asset identity and manifest semantics",
+        "frame, pivot, collision, and animation relationships",
+        "runtime input, observation, and evidence concepts"
+      ]
+    },
+    {
+      "name": "TapTapGameJam runtime probe",
+      "url": "https://github.com/Aoye-3/TapTapGameJam",
+      "revision": "c4b7af6a4d854e800bee220247cf7ae9604d3378",
+      "license": "Apache-2.0",
+      "intake": "selected-artifact-adaptation",
+      "used_for": [
+        "lab/fixtures/godot-runtime-probe"
+      ]
+    },
+    {
+      "name": "Studio Advisor local candidate",
+      "url": "https://github.com/Aoye-3/TapTapGameJam",
+      "revision": "local-uncommitted-snapshot-2026-09-01",
+      "license": "Apache-2.0",
+      "intake": "selected-artifact-copy",
+      "used_for": [
+        "lab/candidates/studio-advisor"
+      ]
+    },
+    {
+      "name": "godot-ai",
+      "url": "https://github.com/hi-godot/godot-ai",
+      "revision": "a468a7eedd7dcbbeb0221a297f7e7c50f5ab2b4e",
+      "license": "MIT",
+      "intake": "reference-only",
+      "used_for": [
+        "future authoring and runtime provider conformance"
+      ]
+    },
+    {
+      "name": "Claude Code Game Studios",
+      "url": "https://github.com/Donchitos/Claude-Code-Game-Studios",
+      "revision": "984023ddac0d5e27624f2baacde6105e45de375f",
+      "license": "MIT",
+      "intake": "reference-only",
+      "used_for": [
+        "advisor knowledge and asset specification research"
+      ]
+    },
+    {
+      "name": "Godot Engine",
+      "url": "https://github.com/godotengine/godot",
+      "revision": "4.7.2-stable-local-binary",
+      "license": "MIT",
+      "intake": "ignored-local-tool",
+      "used_for": [
+        ".tools/godot",
+        "Godot fixture execution"
+      ]
+    }
+  ]
+}

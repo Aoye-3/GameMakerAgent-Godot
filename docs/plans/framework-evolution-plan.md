@@ -31,7 +31,7 @@ GameMakerAgent 框架。框架工作必须缩短项目交付路径，不能为�
 
 ```text
 已有双仓边界与 Runtime / Evidence / Promotion 契约
-  -> 项目内 Studio Advisor 候选
+  -> 框架本地 Lab + Studio Advisor / Godot Probe 候选
     -> Production Bridge 制品草案
       -> 最小 Delivery Loop 与 Godot Provider 实测
         -> 含新素材的真实关卡/内容纵切片
@@ -89,15 +89,15 @@ GameMakerAgent 框架。框架工作必须缩短项目交付路径，不能为�
 - [x] 首批契约和 Plan 可被后续 Agent 直接读取。
 - [x] 尚未把候选 MCP 的 README 声明误写成已验证能力。
 
-## Phase 0.5：项目内孵化顾问层
+## Phase 0.5：建立框架 Lab 并验证顾问层
 
 ### Task 0.4：实现 Studio Advisor 候选
 
-**状态：** In progress — 项目候选技能包与行为用例已建立，等待真实使用验证。
+**状态：** In progress — 候选已迁入框架 Lab，静态用例可解析，等待真实使用验证。
 
-在 TapTapGameJam 的 `.vibegame/candidates/gamemaker-agent/skills/` 中先实现单入口顾问层，
-按需提供玩法、体验、范围和试玩复盘视角。它只讨论和形成用户确认的 Decision Card，不参与
-普通编码、运行或自动任务分配。
+单入口顾问层从项目候选选择性迁入 `lab/candidates/studio-advisor/`，按需提供玩法、体验、
+范围和试玩复盘视角。它只讨论和形成用户确认的 Decision Card，不参与普通编码、运行或
+自动任务分配。
 
 **验收标准：**
 
@@ -110,11 +110,28 @@ GameMakerAgent 框架。框架工作必须缩短项目交付路径，不能为�
 
 **依赖：** Checkpoint 0。
 
+### Task 0.5：建立框架本地 Lab 与 Godot Runtime Probe
+
+**状态：** Completed
+
+**验收标准：**
+
+- [x] `lab/` 明确区分候选、夹具和固定来源，不复制完整外部仓库。
+- [x] 本地 Godot 4.7.2 位于 Git 忽略的 `.tools/`，运行数据与缓存留在当前 F 盘工作区。
+- [x] 去项目化 Runtime Probe 能验证输入、`gamemaker_watch` 和 `_gamemaker_state()`。
+- [x] Studio Advisor Eval 与来源清单以显式 UTF-8 解析。
+- [x] 一个命令可以运行全部首批 Lab smoke。
+
+**验证：** `powershell -ExecutionPolicy Bypass -File scripts/test-lab.ps1` 输出
+`LAB_TEST_PASS`。
+
+**依赖：** Checkpoint 0、ADR-005。
+
 ### Checkpoint 0.5：顾问层可用
 
 - [ ] 用户可以自然语言显式启用顾问，无需进入阶段状态机。
 - [ ] Programmer 只接收确认决定，不接收完整讨论上下文。
-- [ ] 顾问候选仍属于项目，尚未被描述为 GameMakerAgent 稳定能力。
+- [ ] 顾问候选仍属于 Lab，尚未被描述为 GameMakerAgent 稳定能力。
 
 ## Phase 1：验证 Production Bridge 的最小语义
 

@@ -38,6 +38,10 @@ GameMakerAgent 的角色、提示词或公共接口。框架需要先形成独�
 [ADR-004](ADR-004-production-bridge-and-godot-native-source-of-truth.md) 进一步澄清为
 Godot-first、Provider-neutral：公共语义不绑定具体 MCP，但不构建跨引擎最低公分母模型。
 
+GameJam 前的开发顺序由
+[ADR-005](ADR-005-framework-local-lab-before-game-project.md) 部分修订：去项目化通用底座可以
+先进入框架 `lab/` 测试，但仍需真实项目纵切片才能晋升为稳定能力。
+
 ## 备选方案
 
 ### 直接修改并长期维护 VibeGame 上游实现

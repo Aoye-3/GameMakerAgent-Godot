@@ -4,8 +4,9 @@
 一条可信的游戏开发链路。
 
 > **当前状态：架构落地起步阶段。** V1 的产品边界、ADR、核心契约草案和实施计划已经建立；
-> Production Bridge、Godot Provider 和完整内容纵切片尚未实现。当前仓库不是可安装的成品，
-> 也不应把设计目标理解为已经交付的能力。
+> 框架本地 Lab、Studio Advisor 候选和 Godot Runtime Probe 已可运行；Production Bridge、
+> Godot Provider 和完整内容纵切片尚未实现。当前仓库不是可安装的成品，也不应把设计目标
+> 理解为已经交付的能力。
 
 ## 为什么需要 GameMakerAgent
 
@@ -145,7 +146,7 @@ Production Card、Asset Spec 和 Godot Binding 当前仍是待真实纵切片验
 
 V1 只实现能证明核心价值的最小垂直路径：
 
-1. 验证项目内的 `studio-advisor` 候选，确认它只在讨论时启用；
+1. 在框架本地 Lab 迁入并验证 `studio-advisor` 与 Godot Runtime Probe；
 2. 建立最小 Project Semantic Model 查询能力；
 3. 起草并实测 Production Card、Asset Spec 和 Godot Binding；
 4. 实现 Runtime Adapter、Evidence Bundle 与最小 Reviewer 闭环；
@@ -164,7 +165,8 @@ V1 不追求多引擎、多模型编排、大型 UI、自动生成完整游戏�
 | 原生 Godot 项目是真实源 | 已接受并记录 |
 | Runtime Adapter | Draft 0.1 |
 | Evidence Bundle / Promotion Manifest | Draft 0.1 + Schema 草案 |
-| Studio Advisor | 项目候选已建立，等待真实使用验证 |
+| Framework Lab / Godot Runtime Probe | 已建立，本地 Godot 4.7.2 smoke 通过 |
+| Studio Advisor | 已迁入 Lab，静态用例可解析，等待真实使用验证 |
 | Production Bridge 架构 | 已接受，尚未实现 |
 | Production Card / Asset Spec / Godot Binding | 待项目纵切片起草与验证 |
 | godot-ai Provider | 已完成源码评估，待固定版本实测 |
@@ -184,13 +186,15 @@ GameMakerAgent/
 │  ├─ plans/           实施顺序、状态和验收标准
 │  └─ research/        有固定来源和日期的外部调研
 ├─ schemas/            已形成机器可读草案的契约
+├─ lab/                未晋升的候选、Godot 夹具和固定来源
+├─ scripts/            框架本地测试入口
 ├─ skills/             首个能力通过晋升门禁后创建
 ├─ adapters/           首个 Provider 实现通过门禁后创建
 └─ evals/              首个去项目化回归夹具通过门禁后创建
 ```
 
-不存在的稳定目录不会提前创建空骨架。新能力先在具体项目中验证，再通过 Promotion Gate
-进入本仓库。
+不存在的稳定目录不会提前创建空骨架。GameJam 前通用底座先在 `lab/` 测试；与玩法、关卡、
+资产和玩家体验相关的能力仍需真实项目验证，再通过 Promotion Gate 进入稳定目录。
 
 ## 开始参与 V1 实现
 
@@ -201,13 +205,20 @@ git clone https://github.com/Aoye-3/GameMakerAgent.git
 cd GameMakerAgent
 ```
 
-当前没有需要安装的运行时依赖或可执行 CLI。开始实现前建议依次阅读：
+当前没有可安装的框架 CLI。本地已准备 Godot 4.7.2 时，可以先运行框架 Lab：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/test-lab.ps1
+```
+
+开始实现前建议依次阅读：
 
 1. [技术文档入口](docs/README.md)
 2. [ADR-004：Production Bridge](docs/decisions/ADR-004-production-bridge-and-godot-native-source-of-truth.md)
-3. [框架演进计划](docs/plans/framework-evolution-plan.md)
-4. [Runtime Adapter](docs/contracts/runtime-adapter.md)
-5. [Evidence Bundle](docs/contracts/evidence-bundle.md)
+3. [ADR-005：框架本地 Lab](docs/decisions/ADR-005-framework-local-lab-before-game-project.md)
+4. [框架演进计划](docs/plans/framework-evolution-plan.md)
+5. [Runtime Adapter](docs/contracts/runtime-adapter.md)
+6. [Evidence Bundle](docs/contracts/evidence-bundle.md)
 
 实现必须遵守三条底线：
 

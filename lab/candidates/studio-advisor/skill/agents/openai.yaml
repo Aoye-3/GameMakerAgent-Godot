@@ -1,0 +1,7 @@
+interface:
+  display_name: "Studio Advisor"
+  short_description: "按需提供游戏玩法、玩家体验、项目范围与试玩复盘的轻量顾问建议"
+  default_prompt: "Use $studio-advisor to evaluate this game decision and recommend the cheapest useful validation."
+
+policy:
+  allow_implicit_invocation: true

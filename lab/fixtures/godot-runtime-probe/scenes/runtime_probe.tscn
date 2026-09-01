@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/runtime_probe.gd" id="1_runtime_probe"]
+
+[node name="RuntimeProbe" type="Node2D" groups=["gamemaker_watch"]]
+script = ExtResource("1_runtime_probe")
+
+[node name="Title" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 420.0
+offset_bottom = 48.0
+text = "GameMakerAgent Lab Runtime Probe"
+theme_override_font_sizes/font_size = 20
+
+[node name="Instructions" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 64.0
+offset_right = 600.0
+offset_bottom = 92.0
+text = "Press Space / verify_trigger to change observable state."
+
+[node name="State" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 108.0
+offset_right = 420.0
+offset_bottom = 136.0
+text = "verification_value=0 trigger_count=0"
