@@ -6,8 +6,11 @@
       "name": "VibeGame",
       "url": "https://github.com/Aoye-3/VibeGame",
       "revision": "7549e57105c6abf1848f714aea63762d540ce04f",
+      "research_ref": "refs/remotes/research/vibegame/main",
       "license": "Apache-2.0",
       "intake": "semantic-extraction",
+      "review_status": "task-1.0-complete",
+      "source_intake_report": "docs/research/core-source-intake.md",
       "used_for": [
         "asset identity and manifest semantics",
         "frame, pivot, collision, and animation relationships",
@@ -36,22 +39,46 @@
     },
     {
       "name": "godot-ai",
-      "url": "https://github.com/hi-godot/godot-ai",
+      "url": "https://github.com/Aoye-3/godot-ai",
+      "upstream_url": "https://github.com/hi-godot/godot-ai",
       "revision": "a468a7eedd7dcbbeb0221a297f7e7c50f5ab2b4e",
+      "research_ref": "refs/remotes/research/godot-ai/main",
       "license": "MIT",
       "intake": "reference-only",
+      "review_status": "task-1.0-source-mapped",
+      "source_intake_report": "docs/research/core-source-intake.md",
       "used_for": [
         "future authoring and runtime provider conformance"
       ]
     },
     {
       "name": "Claude Code Game Studios",
-      "url": "https://github.com/Donchitos/Claude-Code-Game-Studios",
+      "url": "https://github.com/Aoye-3/Claude-Code-Game-Studio",
+      "upstream_url": "https://github.com/Donchitos/Claude-Code-Game-Studios",
       "revision": "984023ddac0d5e27624f2baacde6105e45de375f",
+      "research_ref": "refs/remotes/research/claude-code-game-studios/main",
       "license": "MIT",
       "intake": "reference-only",
+      "review_status": "task-1.0-complete",
+      "knowledge_deduplication_group": "ccgs-gamestudio-shared",
+      "source_intake_report": "docs/research/core-source-intake.md",
       "used_for": [
         "advisor knowledge and asset specification research"
+      ]
+    },
+    {
+      "name": "GameStudio",
+      "url": "https://github.com/bullish0x/GameStudio",
+      "revision": "6027706e8923ba157a22a546c4c0be4b14b0ef4d",
+      "research_ref": "refs/remotes/research/gamestudio/main",
+      "license": "MIT",
+      "intake": "reference-only",
+      "review_status": "task-1.0-complete",
+      "knowledge_deduplication_group": "ccgs-gamestudio-shared",
+      "source_intake_report": "docs/research/core-source-intake.md",
+      "used_for": [
+        "specialist skill comparison",
+        "asset and technical-art constraint research"
       ]
     },
     {

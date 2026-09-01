@@ -23,7 +23,7 @@ Research snapshot，最近复核日期 2026-09-01。仓库活跃度、接口和�
 
 | 项目 | 候选价值 | 当前决定 |
 | --- | --- | --- |
-| [hi-godot/godot-ai](https://github.com/hi-godot/godot-ai) | 广泛编辑能力、运行输入、截图、日志和项目自定义工具 | Phase 3 首测 Provider；固定版本并通过 Adapter 限权 |
+| [hi-godot/godot-ai](https://github.com/hi-godot/godot-ai) | 广泛编辑能力、运行输入、截图、日志和项目自定义工具 | Phase 2 首测 Provider；固定版本并通过 Adapter 限权 |
 | [satelliteoflove/godot-mcp](https://github.com/satelliteoflove/godot-mcp) | 冻结、推进、输入、结构化状态、截图和诊断与 VibeGame RuntimeBridge 接近 | godot-ai 确有运行阻断缺口时的对照候选 |
 | [Erodenn/godot-mcp-runtime](https://github.com/Erodenn/godot-mcp-runtime) | 临时运行桥、较低项目侵入、headless 工作流 | headless 或项目侵入失败时的回退候选 |
 | [Vollkorn-Games/godot-mcp](https://github.com/Vollkorn-Games/godot-mcp) | 批量输入、信号同步、状态检查点和只读工具策略 | 借鉴模式；项目较新，暂不作为依赖 |

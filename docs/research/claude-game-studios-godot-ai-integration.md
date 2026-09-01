@@ -9,6 +9,9 @@ GameMakerAgent 框架、TapTapGameJam 原生 Godot 项目和历史 VibeGame 能�
 本报告聚焦 GameStudio 与 godot-ai。后续对 VibeGame、Godogen、Xenodot、Godot
 Gamestudio 和 OpenGame 的横向比较，以及 Production Bridge 结论，见
 [Agentic 游戏生产框架对比与 GameMaker 架构结论](agentic-game-production-architecture-study.md)。
+Task 1.0 完成后的逐文件采用结论见
+[核心竞品源码吸收清单](core-source-intake.md)；本报告中早期访问状态与数量只保留为调研历史，
+不再作为当前 intake 状态。
 
 本地研究快照保存在当前仓库的 Git research refs 中，没有创建额外 checkout、
 worktree 或项目副本：

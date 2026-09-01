@@ -1,4 +1,4 @@
-# 实施计划：GameMaker 项目驱动框架演进
+# 实施计划：GameMaker V1 三层验证演进
 
 ## 状态
 
@@ -6,9 +6,9 @@ Active
 
 ## 目标
 
-以 TapTapGameJam 的获奖导向制作过程为真实验证场，逐步把 VibeGame 中已经有效的
-统一生产语义、Agent 职责、运行控制、证据审查和 Self-Evolve 能力提炼为独立
-GameMakerAgent 框架。框架工作必须缩短项目交付路径，不能为了抽象完整而阻塞游戏制作。
+先建立可演练的理论框架，再独立验证真实 Godot 与 Provider 技术能力，最后执行一条从讨论、
+查询、素材生成到 godot-ai 创建原生项目、完成代码基础和嵌入素材的使用场景 MVP。MVP 通过后，
+再以 TapTapGameJam 的真实制作过程验证复杂场景和能力晋升。
 
 ## 成功标准
 
@@ -19,6 +19,7 @@ GameMakerAgent 框架。框架工作必须缩短项目交付路径，不能为�
 - 项目能力只有通过 Promotion Gate 后才成为 GameMaker 的稳定资产。
 - GameMaker 不依赖 TapTapGameJam 的路径、玩法、资产或私有状态。
 - 两套 Doc 分别保持可导航、无职责混写，并与实际实现同步。
+- 理论框架、Godot 技术可行性和使用场景价值分别验收，失败能回到明确责任层。
 
 ## 已接受的架构决策
 
@@ -26,17 +27,38 @@ GameMakerAgent 框架。框架工作必须缩短项目交付路径，不能为�
 - [ADR-002](../decisions/ADR-002-native-godot-project-and-replaceable-control-adapter.md)：原生 Godot 项目与可替换 Runtime Adapter。
 - [ADR-003](../decisions/ADR-003-project-incubated-agent-enhancement-layer.md)：项目 `.vibegame` 孵化 Agent 增强层，验证后晋升。
 - [ADR-004](../decisions/ADR-004-production-bridge-and-godot-native-source-of-truth.md)：以 Production Bridge 连接玩法、素材和 Godot 原生实现。
+- [ADR-005](../decisions/ADR-005-framework-local-lab-before-game-project.md)：GameJam 前在框架本地 Lab 搭建通用底座。
+- [ADR-006](../decisions/ADR-006-theory-framework-before-godot-and-scenario-mvp.md)：理论框架、真实 Godot、使用场景 MVP 顺序通过。
 
 ## 依赖关系
 
 ```text
 已有双仓边界与 Runtime / Evidence / Promotion 契约
   -> 框架本地 Lab + Studio Advisor / Godot Probe 候选
-    -> Production Bridge 制品草案
-      -> 最小 Delivery Loop 与 Godot Provider 实测
-        -> 含新素材的真实关卡/内容纵切片
-          -> 检查器、技能和契约按证据晋升到 GameMakerAgent
+    -> 理论框架：查询、生产制品、技能路由、Delivery Loop、假 Provider 演练
+      -> 真实 Godot：固定版本 Provider conformance 与素材绑定技术验证
+        -> 使用场景 MVP：讨论 -> 查询 -> 生成素材 -> godot-ai -> 原生项目 -> 代码与素材
+          -> GameJam 真实纵切片
+            -> 检查器、技能和契约按证据晋升到 GameMakerAgent
 ```
+
+## 核心参考实现的吸收与接入时机
+
+“源码已拉取”“语义已吸收”“运行时已接入”是三种不同状态。核心参考实现只以固定 Git ref
+进入研究基线；只有经过目标任务和回归用例证明的最小部分才进入 GameMaker 实现。
+
+| 参考实现 | 当前状态 | 吸收或接入时机 | 进入 GameMaker 的形态 | 通过条件 |
+| --- | --- | --- | --- | --- |
+| VibeGame `7549e57` | Task 1.0 源码吸收清单已完成；Studio Advisor 候选已选择性迁入 | Phase 1.1、1.2、1.4 | 查询语义、Production Bridge 字段、运行/证据合同与用例 | 保留统一语义但不携带 Phaser、阶段状态机或完整运行外壳 |
+| Claude Code Game Studios `984023d` | Task 1.0 源码吸收清单已完成，并已与 GameStudio 去重 | Phase 1.2、1.3 | 顾问视角、范围问题、Asset Spec 专业约束 | 只在讨论或规格任务加载，不复制多 Agent、Hook 和强制模板 |
+| GameStudio `6027706` | Task 1.0 源码选择与 CCGS 去重已完成 | Phase 1.2、1.3 | 少量技术美术、资产和专业审核规则；优先转成字段或检查器 | 每项规则必须指出减少的错误；不引入 55 Agent / 182 Skill 目录 |
+| Godot Gamestudio / Xenodot Forge | 文档研究已完成，非首轮依赖 | Phase 1.4 与 Phase 5 | Evidence 新鲜度、Maker/Reviewer 分离、人工 Promotion Gate | 与现有合同对照后只补缺口，不移植其产品外壳 |
+| godot-ai `a468a7e` | Task 1.0 工具面映射已完成；**尚未安装、未实现 Adapter、未接入** | Phase 2.2 安装固定插件并实现 Provider；Phase 3.4 用于 MVP | 受限 Authoring / Runtime Provider，位于 Adapter 后 | 创建/打开、编辑、资源、运行、输入、状态、截图、日志、清理矩阵重复通过 |
+| 其他 Godot MCP | 仅研究候选 | godot-ai 在 Phase 2.2 出现阻断缺口后 | 同一 Adapter 的替代 Provider | 必须使用相同 conformance matrix，不因工具更多而接入 |
+| GdUnit4 / Benchmarks | 候选研究 | Phase 2.1 补白盒验证；Phase 5 建回归 | 测试依赖或公开回归思想 | 不用 benchmark 分数代替人工玩法结论 |
+
+核心参考吸收必须在 Checkpoint 1 关闭，godot-ai 真实接入必须在 Checkpoint 2 关闭；两者未完成
+不得开始 Phase 3 的完整使用场景 MVP。
 
 ## Phase 0：框架基础
 
@@ -89,24 +111,19 @@ GameMakerAgent 框架。框架工作必须缩短项目交付路径，不能为�
 - [x] 首批契约和 Plan 可被后续 Agent 直接读取。
 - [x] 尚未把候选 MCP 的 README 声明误写成已验证能力。
 
-## Phase 0.5：建立框架 Lab 并验证顾问层
+## Phase 0.5：已有框架 Lab 与先期风险探针
 
-### Task 0.4：实现 Studio Advisor 候选
+### Task 0.4：准备 Studio Advisor 理论候选
 
-**状态：** In progress — 候选已迁入框架 Lab，静态用例可解析，等待真实使用验证。
-
-单入口顾问层从项目候选选择性迁入 `lab/candidates/studio-advisor/`，按需提供玩法、体验、
-范围和试玩复盘视角。它只讨论和形成用户确认的 Decision Card，不参与普通编码、运行或
-自动任务分配。
+**状态：** Completed as candidate — 已迁入 Lab 并通过静态行为用例；真实价值留到 Phase 3。
 
 **验收标准：**
 
-- [ ] 明确讨论请求能调用相关视角，普通实现请求不加载顾问内容。
-- [ ] 未确认时不写项目文件；确认后只生成轻量决策卡。
-- [ ] 顾问不创建 Agent、GDD、任务、代码或场景。
-- [ ] 至少用一个真实玩法讨论和一个试玩复盘验证其价值与噪声。
+- [x] 单入口按需提供玩法、体验、范围和试玩复盘视角。
+- [x] 候选规则明确不创建 Agent、GDD、任务、代码或场景。
+- [x] 静态用例覆盖普通实现请求不加载顾问内容。
 
-**验证：** 保存输入、顾问输出、用户确认和后续是否减少返工的项目记录。
+**验证：** `scripts/test-lab.ps1` 能解析全部 Studio Advisor 行为用例。
 
 **依赖：** Checkpoint 0。
 
@@ -119,7 +136,6 @@ GameMakerAgent 框架。框架工作必须缩短项目交付路径，不能为�
 - [x] `lab/` 明确区分候选、夹具和固定来源，不复制完整外部仓库。
 - [x] 本地 Godot 4.7.2 位于 Git 忽略的 `.tools/`，运行数据与缓存留在当前 F 盘工作区。
 - [x] 去项目化 Runtime Probe 能验证输入、`gamemaker_watch` 和 `_gamemaker_state()`。
-- [x] Studio Advisor Eval 与来源清单以显式 UTF-8 解析。
 - [x] 一个命令可以运行全部首批 Lab smoke。
 
 **验证：** `powershell -ExecutionPolicy Bypass -File scripts/test-lab.ps1` 输出
@@ -127,184 +143,242 @@ GameMakerAgent 框架。框架工作必须缩短项目交付路径，不能为�
 
 **依赖：** Checkpoint 0、ADR-005。
 
-### Checkpoint 0.5：顾问层可用
+### Checkpoint 0.5：理论工作台可用
 
-- [ ] 用户可以自然语言显式启用顾问，无需进入阶段状态机。
-- [ ] Programmer 只接收确认决定，不接收完整讨论上下文。
-- [ ] 顾问候选仍属于 Lab，尚未被描述为 GameMakerAgent 稳定能力。
+- [x] 候选、Fixture、来源和本地工具边界明确。
+- [x] 先期 Probe 可用于发现 Godot 基础风险，但不被描述为产品闭环。
+- [x] Studio Advisor 仍属于 Lab，不被描述为稳定能力。
 
-## Phase 1：验证 Production Bridge 的最小语义
+## Phase 1：搭建理论框架
 
-本阶段先回答 GameMaker 最关键的问题：Codex 如何从项目事实理解玩法、资产约束和 Godot
-使用方式。只做任务局部语义，不搬运 VibeGame 的 Phaser Project/Scene/Node 数据模型。
+本阶段定义 GameMaker 的逻辑系统并用假 Provider 演练，不接入正式 godot-ai，也不要求创建
+真实游戏项目。理论框架必须可解析、可路由、可失败，不能只是一组说明文档。
 
-### Task 1.1：建立 Project Semantic Model 查询草案
+### Task 1.0：完成核心竞品源码吸收清单
 
-**状态：** Pending
+**状态：** Completed — 四个核心源码 ref 已完成逐文件 adopt/adapt/reject 取证与去重。
 
 **验收标准：**
 
-- [ ] 能按需回答 Godot 版本、目录、输入、场景入口、可复用资源、玩家动词和资产惯例。
-- [ ] 所有事实可追踪到原生项目 revision，不复制完整 SceneTree。
-- [ ] 普通代码修复只加载相关查询结果，不注入全量项目档案。
+- [x] VibeGame、Claude Code Game Studios、GameStudio、godot-ai 固定 revision 可由 Git ref 读取。
+- [x] 每个拟吸收能力记录源文件、目标制品或模块、改写方式、许可证和明确拒绝项。
+- [x] GameStudio 与 Claude Code Game Studios 的重叠知识完成去重，并优先落为字段、检查器或按需顾问参考。
 
-**验证：** 用三个不同任务查询并检查结果最小性、来源和过期行为。
+**实际结果：** [核心竞品源码吸收清单](../research/core-source-intake.md) 固定了后续任务唯一允许
+使用的知识入口，并以 `SRC-01` 至 `SRC-06` 为 Skill、Contract、Schema、检查器和 Provider
+提供行为追踪锚点。本任务未新增正式能力，也未安装 godot-ai。
+
+**验证：** 四个来源 ref/revision 与许可证可读取；逐文件清单覆盖来源、问题、目标形态、改写和
+拒绝项；CCGS/GameStudio 重叠文件已直接 diff；Lab、JSON、文档链接与 Git diff 检查通过。
 
 **依赖：** Checkpoint 0.5。
 
-### Task 1.2：起草 Production Card、Asset Spec 与 Godot Binding
+### Task 1.1：建立 Project Semantic Model 查询合同
 
 **状态：** Pending
 
 **验收标准：**
 
-- [ ] Production Card 只包含当前内容的玩家结果、节拍、复用、新素材、绑定和验收。
-- [ ] Asset Spec 能表达帧、尺寸、格式、透明度、Pivot、来源、许可和归一化要求。
-- [ ] Godot Binding 能映射 Resource、导入选项、场景位置、动画/碰撞和验证点。
-- [ ] 制品不出现 imagegen、godot-ai 或其他第三方工具名。
+- [ ] 区分空工作区、已有 Godot 项目和过期查询三种状态。
+- [ ] 按需返回 Godot 基线、目录、输入、场景入口、可复用资源、玩家动词和资产惯例。
+- [ ] 每条事实携带来源与 revision，不复制完整 SceneTree。
 
-**验证：** 用一个现有资产替换案例和一个新资产案例做纸面走查，识别缺失字段与冗余字段。
+**验证：** 用空工作区、已有项目和普通修错三个 Fixture 检查查询最小性与过期行为。
+
+**依赖：** Task 1.0。
+
+### Task 1.2：定义 Production Card、Asset Spec 与 Godot Binding Draft
+
+**状态：** Pending
+
+**验收标准：**
+
+- [ ] Production Card 只保存当前内容的玩家结果、节拍、复用、新素材与验收。
+- [ ] Asset Spec 表达尺寸、帧、透明度、Pivot、格式、来源、许可和归一化要求。
+- [ ] Godot Binding 表达 Resource、导入选项、场景位置、动画/碰撞和验证点。
+- [ ] 三种制品都不出现 imagegen、godot-ai 或其他第三方工具名。
+
+**验证：** 用“空项目创建”和“现有项目新增内容”两套纸面 Fixture 往返追踪字段。
 
 **依赖：** Task 1.1。
 
-### Task 1.3：限定技能包和上下文路由
+### Task 1.3：限定三个技能包与上下文路由
 
 **状态：** Pending
 
 **验收标准：**
 
-- [ ] 首版用户可见能力只规划 `studio-advisor`、`game-delivery`、`evidence-review`。
-- [ ] Production Bridge 主要由制品、查询器和检查器承担，不新增长驻 Agent。
-- [ ] 清楚请求可以直接交付；只有创意取舍未定时才启用 Advisor。
+- [ ] 用户可见能力只包含 `studio-advisor`、`game-delivery`、`evidence-review`。
+- [ ] 清楚请求跳过 Advisor；只有真实创意取舍才加载顾问视角。
+- [ ] Programmer 只接收确认决定、任务局部语义和验收，不接收完整讨论记录。
 
-**验证：** 对讨论、普通修错、新关卡、已有功能复验四类请求检查实际加载内容。
+**验证：** 对讨论、普通修错、新项目、已有功能复验四类请求运行路由用例。
 
 **依赖：** Task 1.2。
 
-## Checkpoint 1：生产语义可交接
-
-- [ ] 顾问确认结果能形成最小 Production Card，不把讨论全文注入实现上下文。
-- [ ] 同一资产能从玩法职责追踪到 Godot Binding，反向也能找到来源与验收。
-- [ ] VibeGame 保留的关系和有意舍弃的引擎模型已记录。
-
-## Phase 2：最小 Delivery Loop
-
-本阶段提炼任务交接、运行证据和独立审核；不建立固定团队或全局阶段状态机。
-
-### Task 2.1：提炼运行时端口与错误模型
+### Task 1.4：完成假 Provider Delivery Loop
 
 **状态：** Pending
 
 **验收标准：**
 
-- [ ] Agent 只调用 GameMaker Runtime Adapter，不知道 MCP 工具名。
-- [ ] 超时、取消、无连接、Godot 错误和适配器错误被统一归一化。
-- [ ] Phaser 旧行为被记录为迁移参照，而不是强加给 Godot。
+- [ ] Asset、Authoring、Runtime Provider 具有工具中立端口和统一错误语义。
+- [ ] Maker、Runtime、Reviewer 是逻辑职责，不强制创建多个 Agent。
+- [ ] Evidence Reviewer 能区分 PASS、FAIL 和 INSUFFICIENT_EVIDENCE，并拒绝过期证据。
 
-**验证：** 契约测试使用假适配器覆盖成功、失败和超时。
+**验证：** 假 Provider 覆盖成功、超时、素材不合规、运行失败和证据版本不一致。
 
-**依赖：** Checkpoint 1。
+**依赖：** Task 1.3。
 
-### Task 2.2：提炼 Player / Reviewer 证据闭环
+## Checkpoint 1：理论框架成立
+
+- [ ] 四个核心参考实现的采用、改写和拒绝清单具有源码证据，未吸收内容不会隐式进入 MVP。
+- [ ] 从确认决定到 Production Card、Asset Spec、Godot Binding 和 Evidence 可完整演练。
+- [ ] 普通实现没有加载顾问或全量项目知识。
+- [ ] 更换假 Provider 不改变上层生产语义。
+- [ ] 人工确认理论合同足够进入真实 Godot 技术验证。
+
+## Phase 2：真实 Godot 与 Provider 技术验证
+
+本阶段只回答“理论合同能否由真实 Godot 工具可靠执行”。使用去项目化 Fixture，避免玩法评价
+和完整用户旅程干扰技术归因。
+
+### Task 2.1：固定 Godot 基线并完善 Conformance Fixture
+
+**状态：** In progress
+
+**验收标准：**
+
+- [x] Godot 4.7.2 CLI 已在当前工作区完成导入和无窗口运行。
+- [x] Runtime Probe 可验证输入和结构化状态。
+- [ ] Fixture 同时包含通过、故意失败、截图和诊断预期。
+
+**验证：** 从干净 Fixture 连续运行两次并得到等价状态结果。
+
+**依赖：** Checkpoint 1；已完成项属于先期风险探针，不代表本任务整体提前通过。
+
+### Task 2.2：固定版本实测 godot-ai
 
 **状态：** Pending
 
 **验收标准：**
 
-- [ ] Player 产生版本化 Evidence Bundle。
-- [ ] Reviewer 能只凭证据判断 PASS、FAIL 或 INSUFFICIENT_EVIDENCE。
-- [ ] 过期截图、缺少输入轨迹或源版本不一致会被拒绝。
-- [ ] 静态、运行状态、运行视觉和人工手感使用不同 verdict，不合并成伪精确分数。
+- [ ] 从 `research/godot-ai/main` 对应 revision 按官方插件结构安装到测试 Fixture，不 vendor 完整仓库。
+- [ ] GameMaker Authoring / Runtime Adapter 只暴露理论合同需要的受限能力。
+- [ ] 验证项目创建/打开、场景、脚本、资源、运行、输入、状态、截图、日志和清理矩阵。
+- [ ] 记录版本、许可证、权限、安全边界、项目污染和失败模式。
+- [ ] 只有存在阻断缺口时，才以同一矩阵比较其他 Godot MCP。
 
-**验证：** 对通过、玩法失败、视觉失败和证据不完整四套夹具运行审核。
+**验证：** 从干净 Fixture 重复两次，Authoring 与 Runtime 结果均可追踪到源 revision。
 
 **依赖：** Task 2.1。
 
-### Task 2.3：建立最小职责链
+### Task 2.3：验证素材到 Godot Binding 的技术路径
 
 **状态：** Pending
 
 **验收标准：**
 
-- [ ] Orchestrator、Maker、Player、Reviewer 是逻辑职责，不要求始终生成四个 Agent。
-- [ ] Designer、Artist 或专业 Reviewer 仅在任务需要时启用。
-- [ ] 每个交接只包含任务契约、必要项目语义和当前 revision。
+- [ ] 一个固定测试素材通过尺寸、透明度、命名、来源和许可证检查。
+- [ ] godot-ai 按 Godot Binding 完成导入、Resource 创建和场景绑定。
+- [ ] 运行截图与结构化状态共同证明素材已在实际场景生效。
 
-**验证：** 使用验证场景完成一次发现失败、修复、复验的闭环。
+**验证：** 删除生成项目后，从相同规格重复执行并得到等价绑定结果。
 
 **依赖：** Task 2.2。
 
-## Checkpoint 2：Agent 增强层骨架
+## Checkpoint 2：真实 Godot 技术门禁
 
-- [ ] 使用假 Adapter 可以完成成功、失败和证据不足三条职责链演练。
-- [ ] 普通实现没有加载顾问或全量资产知识。
-- [ ] Evidence 与实现 revision 一致。
+- [ ] godot-ai 固定版本已实际安装并通过 Adapter 调用；状态不再只是“源码已拉取”。
+- [ ] 理论 Adapter 的关键能力均有真实 Provider 对应或明确降级路径。
+- [ ] Godot 项目副产物和 Provider 权限边界可控。
+- [ ] 素材进入 Resource / Scene 的路径可以重复执行。
+- [ ] 人工确认可以开始端到端使用场景 MVP。
 
-## Phase 3：Godot 运行验证与 Provider 适配
+## Phase 3：完整使用场景 MVP
 
-### Task 3.1：确定 Godot 技术基线
+MVP 固定验证以下用户旅程，不在本阶段扩展为通用游戏生成平台：
 
-**状态：** In progress
+```text
+讨论 -> 查询 -> 生成素材 -> godot-ai MCP -> 创建 Godot 项目 -> 代码基础 -> 嵌入素材 -> 运行证据
+```
 
-**验收标准：**
+### Task 3.1：讨论并确认一个小型游戏目标
 
-- [ ] 项目接受 Godot 稳定版本和 GDScript/C# 范围的 ADR。
-- [x] Godot 4.7.2 CLI 已在当前工作区完成导入和无窗口运行。
-- [x] 候选决策已进入 TapTapGameJam 项目 ADR；框架只记录兼容范围。
-
-**验证：** 从项目仓库执行一次无人工编辑器操作的干净启动。
-
-**依赖：** Checkpoint 0。
-
-### Task 3.2：完成项目内最小验证场景
-
-**状态：** In progress
+**状态：** Pending
 
 **验收标准：**
 
-- [x] `verify_trigger` 使 `verification_value` 从 0 变为 10。
-- [x] 场景通过 `gamemaker_watch` 和 `_gamemaker_state()` 暴露有界状态。
-- [ ] 场景包含一个通过和一个故意失败的验证用例。
+- [ ] 用户显式进入 Studio Advisor，形成一张确认后的 Decision Card。
+- [ ] 讨论只解决玩家目标、核心交互和 MVP 范围，不生成完整 GDD。
+- [ ] 后续 Maker 不接收完整讨论记录。
 
-**验证：** Godot 原生测试或 CLI smoke 能复现预期状态变化。
+**验证：** 对比交接上下文，只包含确认决定而非讨论全文。
+
+**依赖：** Checkpoint 2。
+
+### Task 3.2：查询上下文并形成生产制品
+
+**状态：** Pending
+
+**验收标准：**
+
+- [ ] 查询识别当前为空工作区或不存在目标项目，并返回新项目所需 Godot 基线。
+- [ ] 形成最小 Production Card、至少一个 Asset Spec 和对应 Godot Binding。
+- [ ] 制品可追踪到 Decision Card 和查询来源。
+
+**验证：** 人工走查不存在关键尺寸、导入、场景入口或验收约束的临时猜测。
 
 **依赖：** Task 3.1。
 
-**所有权：** 场景属于 TapTapGameJam；通用契约属于 GameMakerAgent。
-
-### Task 3.3：同场景实测 Godot Provider 候选
+### Task 3.3：生成并归一化首个素材
 
 **状态：** Pending
 
 **验收标准：**
 
-- [ ] 先实测固定版本的 `hi-godot/godot-ai`；存在阻断缺口时再用同一矩阵比较其他 MCP。
-- [ ] 使用相同的启动、输入、推进、状态、截图、错误和清理矩阵。
-- [ ] 记录版本、许可证、安全边界、项目污染和失败模式。
+- [ ] Asset Provider 只接收 Asset Spec 所需字段。
+- [ ] 输出通过尺寸、透明度、命名、来源、许可证及适用的帧/Pivot 检查。
+- [ ] 归一化制品具有稳定标识，供 Godot Binding 引用。
 
-**验证：** 获胜候选从干净项目状态重复两次并产生等价证据。
+**验证：** 检查器通过；原始输出与归一化输出来源可追踪。
 
-**依赖：** Task 3.2、Checkpoint 2。
+**依赖：** Task 3.2。
 
-### Task 3.4：验证 Asset Provider 到 Godot 的交接
+### Task 3.4：通过 godot-ai 创建项目、代码基础并嵌入素材
 
 **状态：** Pending
 
 **验收标准：**
 
-- [ ] 至少一个图像生成或编辑 Provider 只接收 Asset Spec 所需字段。
-- [ ] 生成结果经过尺寸、透明度、帧/Pivot、命名、来源和许可证检查。
-- [ ] 同一 Asset Spec 可以更换 Provider，Godot Binding 不随 Provider 工具名改变。
+- [ ] godot-ai 创建可由原生 Godot 打开的项目、主场景和最小可玩代码。
+- [ ] 归一化素材成为 Godot Resource 并绑定到实际可见节点。
+- [ ] 公共制品不记录 godot-ai 工具名，Provider 可替换边界保持成立。
 
-**验证：** 对同一规格产生或替换两个候选素材，至少一个完成 Godot 导入和场景绑定。
+**验证：** 不依赖手工编辑器操作，从干净输出目录重复创建并成功启动。
 
-**依赖：** Task 1.2、Task 3.3。
+**依赖：** Task 3.3。
 
-## Checkpoint 3：首个框架闭环
+### Task 3.5：运行、审核并给出 MVP 结论
 
-- [ ] 不依赖 TapTapGameJam 私有路径即可运行契约测试。
-- [ ] 项目能通过适配器完成一次真实 Godot 闭环。
-- [ ] 人工确认 Godot 与 Provider 版本、权限策略和替换条件。
+**状态：** Pending
+
+**验收标准：**
+
+- [ ] Evidence Bundle 关联输入、状态、截图、日志、Provider 和源 revision。
+- [ ] Reviewer 分别判断静态、运行状态和运行视觉证据。
+- [ ] 人类确认玩家目标是否成立，并记录相比直接使用 Codex + MCP 的实际收益与负担。
+
+**验证：** 至少执行一次失败修复复验；旧证据不能用于新 revision。
+
+**依赖：** Task 3.4。
+
+## Checkpoint 3：使用场景 MVP 成立
+
+- [ ] 从讨论到可运行 Godot 项目的完整链路可重复。
+- [ ] 至少一个新素材完成生成、归一化、绑定和运行验证。
+- [ ] 失败可以定位到讨论、查询、规格、素材、绑定、实现或证据之一。
+- [ ] 人工确认框架确实减少了信息差，才进入 GameJam 真实制作。
 
 ## Phase 4：服务 GameJam 真实制作
 
@@ -343,7 +417,7 @@ Production Card -> Asset Spec -> Provider -> Godot Binding -> Runtime Evidence -
 
 | 风险 | 影响 | 缓解 |
 | --- | --- | --- |
-| 框架工作挤占 GameJam 制作时间 | 高 | 只做当前项目纵切片必需能力；设人工 Checkpoint |
+| 理论框架过度扩张、挤占 MVP 与 GameJam | 高 | 只实现三技能包和一条 MVP 所需合同；Checkpoint 1 人工收口 |
 | MCP 候选不稳定 | 高 | 固定版本、契约隔离、保留 CLI 启动和诊断路径 |
 | 项目代码过早进入框架 | 高 | Promotion Manifest + 证据 + 人工批准，缺一不可 |
 | 两份文档再次混写 | 中 | 独立入口、仓库规则、跨仓链接而非复制正文 |
@@ -354,10 +428,10 @@ Production Card -> Asset Spec -> Provider -> Godot Binding -> Runtime Evidence -
 
 ## 当前开放问题
 
-1. TapTapGameJam 首版固定的 Godot 版本是什么？
-2. 首版只支持 GDScript，还是必须同时支持 C#？
-3. 第一个用于 MCP 和 Production Bridge 对比的内容纵切片是什么？
+1. godot-ai 固定 revision 与当前 Godot 4.7.2 基线是否完全兼容？
+2. 使用场景 MVP 是否明确只支持 GDScript，暂不覆盖 C#？
+3. MVP 的小型游戏目标和最小玩家交互是什么？
 4. 项目侧语义状态采用 Group、`_gamemaker_state()`，还是两者结合？
-5. 首版 Asset Spec 只覆盖 2D 图像/动画，还是必须同时覆盖音频或 3D？
+5. MVP Asset Spec 是否只覆盖一张 2D 静态或序列图素材？
 
 这些问题会改变项目实现，必须在对应 Task 开始前由项目事实或人工决策确认。

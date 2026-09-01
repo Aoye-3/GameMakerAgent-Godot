@@ -38,6 +38,10 @@ GameStudio 研究快照。把这些仓库整份复制进 GameMakerAgent 会产�
 本 ADR 部分修订 ADR-003 的**时间顺序**，不取消项目验证：通用底座可先在框架 Lab 开发，
 项目衍生能力仍先在项目产生；两类能力最终都必须通过真实项目纵切片才能成为稳定框架能力。
 
+[ADR-006](ADR-006-theory-framework-before-godot-and-scenario-mvp.md) 继续限定 Lab 后的顺序：先完成
+理论框架合同，再进行真实 Godot 技术验证，最后执行完整使用场景 MVP。已有 Runtime Probe
+作为先期风险探针保留，但不代表第二或第三层门禁已经通过。
+
 ## 备选方案
 
 ### 整仓复制所有本地项目

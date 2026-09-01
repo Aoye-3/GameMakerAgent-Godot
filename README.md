@@ -4,8 +4,9 @@
 一条可信的游戏开发链路。
 
 > **当前状态：架构落地起步阶段。** V1 的产品边界、ADR、核心契约草案和实施计划已经建立；
-> 框架本地 Lab、Studio Advisor 候选和 Godot Runtime Probe 已可运行；Production Bridge、
-> Godot Provider 和完整内容纵切片尚未实现。当前仓库不是可安装的成品，也不应把设计目标
+> 框架本地 Lab、Studio Advisor 候选和 Godot Runtime Probe 已可运行；四个核心参考实现已固定
+> 为只读 Git 研究引用，但 Production Bridge、Godot Provider 和完整内容纵切片尚未实现。
+> 当前仓库不是可安装的成品，也不应把设计目标
 > 理解为已经交付的能力。
 
 ## 为什么需要 GameMakerAgent
@@ -142,18 +143,21 @@ Production Card、Asset Spec 和 Godot Binding 当前仍是待真实纵切片验
 更完整的固定版本对比见
 [Agentic 游戏生产框架调研](docs/research/agentic-game-production-architecture-study.md)。
 
-## 第一版实施范围
+## 第一版实施顺序
 
-V1 只实现能证明核心价值的最小垂直路径：
+V1 使用三个不能跳过的门禁：
 
-1. 在框架本地 Lab 迁入并验证 `studio-advisor` 与 Godot Runtime Probe；
-2. 建立最小 Project Semantic Model 查询能力；
-3. 起草并实测 Production Card、Asset Spec 和 Godot Binding；
-4. 实现 Runtime Adapter、Evidence Bundle 与最小 Reviewer 闭环；
-5. 固定版本实测 godot-ai，并保留 CLI 或其他 Provider 的替换路径；
-6. 接入至少一个 Asset Provider；
-7. 在真实 Godot 项目中完成一个包含新增或修改素材的关卡/内容纵切片；
-8. 将通过项目验证的通用部分去项目化，晋升回本仓库。
+1. **理论框架：** 从 VibeGame、Claude Code Game Studios 和 GameStudio 的固定源码版本中，
+   选择性提炼查询语义、Production Card、Asset Spec、Godot Binding、三个技能包和假 Provider
+   Delivery Loop；不复制完整竞品组织。
+2. **真实 Godot：** 安装固定版本 godot-ai 插件，实现受限 Adapter，并在去项目化 Fixture 上
+   验证创建/编辑、资源、运行、输入、状态、截图、日志和清理；此时才可称为 Provider 已接入。
+3. **使用场景 MVP：** 完成“讨论 → 查询 → 生成素材 → godot-ai MCP → 创建原生 Godot 项目
+   → 代码基础 → 嵌入素材 → 运行证据 → 审核”的可重复链路。
+
+MVP 通过后，再在真实 GameJam 内容纵切片中验证复杂制作价值，并将通过门禁的通用部分晋升
+回本仓库。核心参考实现的具体 revision、采用形态和接入时机见
+[实施计划](docs/plans/framework-evolution-plan.md#核心参考实现的吸收与接入时机)。
 
 V1 不追求多引擎、多模型编排、大型 UI、自动生成完整游戏或完整专业岗位目录。
 
@@ -167,11 +171,12 @@ V1 不追求多引擎、多模型编排、大型 UI、自动生成完整游戏�
 | Evidence Bundle / Promotion Manifest | Draft 0.1 + Schema 草案 |
 | Framework Lab / Godot Runtime Probe | 已建立，本地 Godot 4.7.2 smoke 通过 |
 | Studio Advisor | 已迁入 Lab，静态用例可解析，等待真实使用验证 |
+| 核心竞品源码 | 固定 Git ref 已完成逐文件 adopt/adapt/reject 清单与 CCGS/GameStudio 去重 |
 | Production Bridge 架构 | 已接受，尚未实现 |
-| Production Card / Asset Spec / Godot Binding | 待项目纵切片起草与验证 |
-| godot-ai Provider | 已完成源码评估，待固定版本实测 |
+| Production Card / Asset Spec / Godot Binding | 待理论框架阶段起草与假 Provider 演练 |
+| godot-ai Provider | 源码已拉取；尚未安装、未实现 Adapter、未接入 |
 | Asset Provider | 待实现 |
-| 完整新关卡闭环 | 待实现 |
+| 完整使用场景 MVP | 待理论与真实 Godot 两道门禁通过后执行 |
 
 当前状态以 [实施计划](docs/plans/framework-evolution-plan.md) 为准。
 

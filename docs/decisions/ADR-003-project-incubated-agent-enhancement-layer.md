@@ -42,6 +42,9 @@ GameJam 前的开发顺序由
 [ADR-005](ADR-005-framework-local-lab-before-game-project.md) 部分修订：去项目化通用底座可以
 先进入框架 `lab/` 测试，但仍需真实项目纵切片才能晋升为稳定能力。
 
+理论框架、真实 Godot 技术验证和使用场景 MVP 的先后门禁由
+[ADR-006](ADR-006-theory-framework-before-godot-and-scenario-mvp.md) 进一步限定。
+
 ## 备选方案
 
 ### 直接修改并长期维护 VibeGame 上游实现

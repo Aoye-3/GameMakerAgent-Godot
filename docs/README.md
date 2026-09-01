@@ -27,6 +27,7 @@
 - [ADR-003：在项目 `.vibegame` 中孵化 Agent 增强层](decisions/ADR-003-project-incubated-agent-enhancement-layer.md)
 - [ADR-004：以 Production Bridge 连接玩法、素材生产与 Godot](decisions/ADR-004-production-bridge-and-godot-native-source-of-truth.md)
 - [ADR-005：GameJam 前先在框架本地 Lab 搭建并测试通用底座](decisions/ADR-005-framework-local-lab-before-game-project.md)
+- [ADR-006：先建立理论框架，再验证真实 Godot，最后执行使用场景 MVP](decisions/ADR-006-theory-framework-before-godot-and-scenario-mvp.md)
 
 ### 实施计划
 
@@ -38,6 +39,7 @@
 - [Claude Code Game Studios 与 godot-ai 集成评估](research/claude-game-studios-godot-ai-integration.md)
 - [Agentic 游戏生产框架对比与 GameMaker 架构结论](research/agentic-game-production-architecture-study.md)
 - [V1 框架来源迁入清单](research/source-intake-manifest.md)
+- [核心竞品源码吸收清单](research/core-source-intake.md)
 
 ## 两套 Doc 的边界
 
