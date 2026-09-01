@@ -1,4 +1,10 @@
 .tools/
 artifacts/
+.venv/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.py[cod]
+**/.vibegame/gamemaker/artifacts/
 lab/fixtures/**/.godot/
 lab/fixtures/**/.import/

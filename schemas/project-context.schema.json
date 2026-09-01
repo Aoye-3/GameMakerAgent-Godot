@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Aoye-3/GameMakerAgent/schemas/project-context.schema.json",
+  "title": "GameMaker Project Context Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "context_id", "project_state", "project_root", "source_revision", "engine", "facts"],
+  "properties": {
+    "schema_version": { "const": "0.1" },
+    "context_id": { "type": "string", "minLength": 1 },
+    "project_state": { "enum": ["non_godot", "godot_project", "stale"] },
+    "project_root": { "type": "string", "minLength": 1 },
+    "source_revision": { "type": "string", "minLength": 1 },
+    "engine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["features", "main_scene", "input_actions"],
+      "properties": {
+        "features": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "main_scene": { "type": ["string", "null"] },
+        "input_actions": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+      }
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "value", "source"],
+        "properties": {
+          "kind": { "enum": ["scene", "script", "resource", "player_verb", "asset_convention"] },
+          "value": { "type": "string", "minLength": 1 },
+          "source": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

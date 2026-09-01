@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Aoye-3/GameMakerAgent/schemas/godot-binding.schema.json",
+  "title": "GameMaker Godot Binding",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "binding_id", "production_id", "asset_id", "artifact_id", "resource", "node", "import_options", "verification"],
+  "properties": {
+    "schema_version": { "const": "0.1" }, "binding_id": { "type": "string", "minLength": 1 },
+    "production_id": { "type": "string", "minLength": 1 }, "asset_id": { "type": "string", "minLength": 1 },
+    "artifact_id": { "type": "string", "minLength": 1 },
+    "resource": { "type": "object", "additionalProperties": false, "required": ["path", "type"], "properties": { "path": { "type": "string", "pattern": "^res://" }, "type": { "enum": ["Texture2D", "SpriteFrames"] } } },
+    "node": { "type": "object", "additionalProperties": false, "required": ["scene", "path", "type"], "properties": { "scene": { "type": "string", "pattern": "^res://" }, "path": { "type": "string", "minLength": 1 }, "type": { "enum": ["Sprite2D", "AnimatedSprite2D"] } } },
+    "import_options": { "type": "object" }, "animation": { "type": "object" }, "collision": { "type": "object" },
+    "verification": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+  }
+}

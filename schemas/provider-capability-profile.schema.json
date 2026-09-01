@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Aoye-3/GameMakerAgent/schemas/provider-capability-profile.schema.json",
+  "title": "GameMaker Provider Capability Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "provider_id", "provider_kind", "version", "adapter", "capabilities"],
+  "properties": {
+    "schema_version": { "const": "0.1" }, "provider_id": { "type": "string", "minLength": 1 },
+    "provider_kind": { "enum": ["asset", "authoring", "runtime", "authoring_runtime"] },
+    "version": { "type": "string", "minLength": 1 }, "adapter": { "type": "string", "minLength": 1 },
+    "capabilities": { "type": "array", "items": { "enum": ["connect", "project_select", "scene_edit", "script_edit", "resource_import", "start", "stop", "pause", "resume", "input", "step", "step_until", "observe", "capture", "diagnostics", "cleanup"] }, "uniqueItems": true }
+  }
+}
