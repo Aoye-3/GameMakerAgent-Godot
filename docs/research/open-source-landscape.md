@@ -2,8 +2,11 @@
 
 ## 状态
 
-Research snapshot，查询日期 2026-08-31。仓库活跃度、接口和版本会变化；所有候选在
+Research snapshot，最近复核日期 2026-09-01。仓库活跃度、接口和版本会变化；所有候选在
 成为依赖前必须以固定版本完成本地实测。
+
+本页保留候选清单；统一生产语义、资产到 Godot 的信息差和详细能力矩阵见
+[Agentic 游戏生产框架对比与 GameMaker 架构结论](agentic-game-production-architecture-study.md)。
 
 ## 框架和晋升模式
 
@@ -13,15 +16,16 @@ Research snapshot，查询日期 2026-08-31。仓库活跃度、接口和版本�
 | [GodoGen](https://github.com/htdt/godogen) | 分阶段制作、运行引擎、用证据替代完成声明 | 完整流程较重，不能阻塞 GameJam 迭代 |
 | [OpenGame](https://github.com/leigest519/OpenGame) | Template Skill 与 Debug Skill 分开演化 | 主要面向 Web 游戏，不提供 Godot 运行层 |
 | [Godot Gamestudio](https://github.com/schmoenraad/godot-gamestudio) | Maker/Reviewer 分离、证据新鲜度门禁 | 早期项目，公开验证样本有限 |
-| [Claude Code Game Studios](https://github.com/Donchitos/Claude-Code-Game-Studios) | 角色目录、Hook 和审核强度分级 | 大量 Agent/Skill 会使首版治理过重 |
+| [Claude Code Game Studios](https://github.com/Donchitos/Claude-Code-Game-Studios) | 游戏设计、范围控制和复盘的专业判断框架 | 大量 Agent、阶段门禁和模板会使日常开发过重 |
+| [GameStudio](https://github.com/bullish0x/GameStudio) | 多引擎专业知识、资产规格、技术美术与团队协作覆盖 | 55 Agent / 182 Skill 的宽度不是首版目标，常驻会增加上下文噪声 |
 
 ## Godot 控制和运行验证
 
 | 项目 | 候选价值 | 当前决定 |
 | --- | --- | --- |
-| [satelliteoflove/godot-mcp](https://github.com/satelliteoflove/godot-mcp) | 冻结、推进、输入、结构化状态、截图和诊断与 VibeGame RuntimeBridge 最接近 | Phase 1 首要实测候选 |
-| [Erodenn/godot-mcp-runtime](https://github.com/Erodenn/godot-mcp-runtime) | 临时运行桥、较低项目侵入、headless 工作流 | Phase 1 对照候选 |
-| [hi-godot/godot-ai](https://github.com/hi-godot/godot-ai) | 广泛编辑器能力和成熟客户端接入 | 作为后期编辑能力参考，首版不绑定 |
+| [hi-godot/godot-ai](https://github.com/hi-godot/godot-ai) | 广泛编辑能力、运行输入、截图、日志和项目自定义工具 | Phase 3 首测 Provider；固定版本并通过 Adapter 限权 |
+| [satelliteoflove/godot-mcp](https://github.com/satelliteoflove/godot-mcp) | 冻结、推进、输入、结构化状态、截图和诊断与 VibeGame RuntimeBridge 接近 | godot-ai 确有运行阻断缺口时的对照候选 |
+| [Erodenn/godot-mcp-runtime](https://github.com/Erodenn/godot-mcp-runtime) | 临时运行桥、较低项目侵入、headless 工作流 | headless 或项目侵入失败时的回退候选 |
 | [Vollkorn-Games/godot-mcp](https://github.com/Vollkorn-Games/godot-mcp) | 批量输入、信号同步、状态检查点和只读工具策略 | 借鉴模式；项目较新，暂不作为依赖 |
 
 GameMaker 采用 MCP 的架构依据是“聚焦、可组合的服务器”，而不是单一全能 Server。
@@ -44,10 +48,13 @@ Godot 原生扩展和调试边界以官方文档为准：
 ## 当前采用结论
 
 1. 采用 Xenodot Forge 的“双仓 + 项目内生 + 晋升”思想，不采用其实现作为底座。
-2. 保留 VibeGame 的 Agent/证据闭环，提炼契约而不是复制整个 Phaser 引擎。
-3. 用相同项目场景实测两个 MCP 后再选择依赖。
+2. 保留 VibeGame 的统一生产语义与 Agent/证据闭环，提炼 Production Bridge 和交付契约，
+   不复制整个 Phaser 引擎。
+3. 先用同一项目场景实测固定版本 godot-ai；存在阻断缺口时再用相同矩阵比较其他 MCP。
 4. 以 GdUnit4 白盒测试补充 MCP 黑盒运行证据。
-5. 首版限制为最小 Agent 阶段，不复制大型角色目录。
+5. 首版把角色保留为最小职责链，不复制大型角色目录或强制阶段状态机。
+6. 把生图等能力视为 Asset Provider；素材只有在完成归一化、Godot Binding 和运行验证后
+   才算可用。
 
 以上均为采用方向，不代表候选已经通过 Windows、目标 Godot 版本或 TapTapGameJam
 实际场景验证。

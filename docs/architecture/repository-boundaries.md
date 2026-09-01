@@ -46,6 +46,10 @@ TapTapGameJam 项目问题
 
 任何一步失败，候选能力继续留在项目仓库，不得以“以后补测试”为由提前进入框架。
 
+项目候选统一在 `.vibegame/candidates/gamemaker-agent/` 中孵化；该目录只保存可提炼的
+Skill、Adapter、Eval 和晋升记录，不保存游戏玩法、场景或资产副本。完整的通用开发框架
+始终以 GameMakerAgent 自己的目录为最终权威来源。
+
 ## VibeGame 迁移边界
 
 现有 VibeGame 是框架提炼来源，不是需要整仓复制的模板。迁移以能力纵切片进行：
@@ -53,8 +57,9 @@ TapTapGameJam 项目问题
 1. 先定义目标契约和验收证据。
 2. 从 VibeGame 找到满足该契约的最小实现。
 3. 去除 Phaser、项目路径和上游仓库流程等非必要耦合。
-4. 在 GameMakerAgent 独立验证。
-5. 记录来源、差异和尚未迁移的行为。
+4. 先在项目候选区完成真实 Godot 纵切片验证。
+5. 去项目化后在 GameMakerAgent 完成独立契约与行为回归。
+6. 记录来源、差异和尚未迁移的行为。
 
 ## 文档边界
 

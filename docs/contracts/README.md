@@ -14,5 +14,5 @@
 - [`schemas/evidence-bundle.schema.json`](../../schemas/evidence-bundle.schema.json)
 - [`schemas/promotion-manifest.schema.json`](../../schemas/promotion-manifest.schema.json)
 
-契约在 Phase 1 实测前保持 Draft。第一次真实 Godot 纵切片通过后，才允许提升为
+契约在 Phase 3 实测前保持 Draft。第一次真实 Godot 纵切片通过后，才允许提升为
 Accepted 1.0；版本提升必须说明兼容性。

@@ -8,3 +8,5 @@
 | --- | --- | --- |
 | [ADR-001](ADR-001-separate-framework-and-project-repositories.md) | Accepted | 框架与具体游戏保持独立仓库，通过验证晋升连接 |
 | [ADR-002](ADR-002-native-godot-project-and-replaceable-control-adapter.md) | Accepted | 原生 Godot 项目是真实源，MCP 位于可替换控制适配层 |
+| [ADR-003](ADR-003-project-incubated-agent-enhancement-layer.md) | Accepted | 在项目 `.vibegame` 孵化 Agent 增强层，再晋升到 GameMakerAgent |
+| [ADR-004](ADR-004-production-bridge-and-godot-native-source-of-truth.md) | Accepted | 以 Production Bridge 连接玩法、素材生产与 Godot 原生实现 |

@@ -1,13 +1,16 @@
 # GameMakerAgent 框架技术文档
 
 这里是 GameMakerAgent 可迁移开发框架的唯一技术文档入口。文档解释框架如何
-编排 Agent、适配游戏引擎、验证运行结果，以及如何从具体项目中晋升可复用能力。
+连接玩法、素材和引擎语义，编排 Agent、验证运行结果，以及如何从具体项目中晋升
+可复用能力。
 
 ## 文档地图
 
 ### 架构
 
 - [框架与项目仓库边界](architecture/repository-boundaries.md)
+- [Agent 增强层与项目孵化路径](architecture/agent-enhancement-layer.md)
+- [Production Bridge：从玩法与素材意图到 Godot 可运行内容](architecture/production-bridge.md)
 
 ### 契约
 
@@ -21,6 +24,8 @@
 - [ADR 索引](decisions/README.md)
 - [ADR-001：框架仓库与游戏项目仓库保持独立](decisions/ADR-001-separate-framework-and-project-repositories.md)
 - [ADR-002：原生 Godot 项目是真实源，MCP 位于可替换控制适配层](decisions/ADR-002-native-godot-project-and-replaceable-control-adapter.md)
+- [ADR-003：在项目 `.vibegame` 中孵化 Agent 增强层](decisions/ADR-003-project-incubated-agent-enhancement-layer.md)
+- [ADR-004：以 Production Bridge 连接玩法、素材生产与 Godot](decisions/ADR-004-production-bridge-and-godot-native-source-of-truth.md)
 
 ### 实施计划
 
@@ -29,6 +34,8 @@
 ### 调研
 
 - [相似开源项目与采用建议](research/open-source-landscape.md)
+- [Claude Code Game Studios 与 godot-ai 集成评估](research/claude-game-studios-godot-ai-integration.md)
+- [Agentic 游戏生产框架对比与 GameMaker 架构结论](research/agentic-game-production-architecture-study.md)
 
 ## 两套 Doc 的边界
 
