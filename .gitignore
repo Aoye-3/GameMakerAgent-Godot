@@ -5,6 +5,7 @@ artifacts/
 .ruff_cache/
 __pycache__/
 *.py[cod]
+*.egg-info/
 **/.vibegame/gamemaker/artifacts/
 lab/fixtures/**/.godot/
 lab/fixtures/**/.import/

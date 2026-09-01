@@ -3,11 +3,9 @@
 让 Codex 等通用编码 Agent 理解如何把**玩法设计、素材生产、Godot 实现与运行验证**连接成
 一条可信的游戏开发链路。
 
-> **当前状态：架构落地起步阶段。** V1 的产品边界、ADR、核心契约草案和实施计划已经建立；
-> 框架本地 Lab、Studio Advisor 候选和 Godot Runtime Probe 已可运行；四个核心参考实现已固定
-> 为只读 Git 研究引用，但 Production Bridge、Godot Provider 和完整内容纵切片尚未实现。
-> 当前仓库不是可安装的成品，也不应把设计目标
-> 理解为已经交付的能力。
+> **当前状态：V1 可执行底座。** repo-scoped Codex Plugin、三个 Skill、Python Context Core、
+> 公共 Schema、godot-ai capability profile、只读 Godot Dock 和统一回归入口已经建立。真实
+> godot-ai conformance 与完整内容纵切片仍未通过，因此不得宣称成熟 Provider 或产品 MVP 已完成。
 
 ## 为什么需要 GameMakerAgent
 
@@ -210,10 +208,19 @@ git clone https://github.com/Aoye-3/GameMakerAgent.git
 cd GameMakerAgent
 ```
 
-当前没有可安装的框架 CLI。本地已准备 Godot 4.7.2 时，可以先运行框架 Lab：
+同步仓库内 Python 环境并检查预打包开发环境：
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File scripts/test-lab.ps1
+$env:UV_CACHE_DIR = "$PWD/.tools/uv/cache"
+$env:UV_PROJECT_ENVIRONMENT = "$PWD/.venv"
+uv sync --locked --all-groups
+uv run --locked gamemaker doctor --project godot
+```
+
+运行完整框架回归：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/test-framework.ps1
 ```
 
 开始实现前建议依次阅读：

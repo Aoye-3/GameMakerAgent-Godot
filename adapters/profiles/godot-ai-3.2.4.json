@@ -1,0 +1,11 @@
+{
+  "schema_version": "0.1",
+  "provider_id": "godot-ai",
+  "provider_kind": "authoring_runtime",
+  "version": "3.2.4@a468a7eedd7dcbbeb0221a297f7e7c50f5ab2b4e",
+  "adapter": "gamemaker.godot-ai.v0",
+  "capabilities": [
+    "connect", "project_select", "scene_edit", "script_edit", "resource_import",
+    "start", "stop", "input", "observe", "capture", "diagnostics", "cleanup"
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Studio Advisor"
+  short_description: "Review game design, scope, experience, and playtest decisions"
+  default_prompt: "Use $studio-advisor to evaluate this game decision and propose the cheapest useful validation."

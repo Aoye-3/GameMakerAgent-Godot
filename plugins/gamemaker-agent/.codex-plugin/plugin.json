@@ -1,0 +1,22 @@
+{
+  "name": "gamemaker-agent",
+  "version": "0.1.0",
+  "description": "Connect game-design context, asset specifications, Godot implementation, and runtime evidence in Codex.",
+  "author": {
+    "name": "GameMakerAgent contributors"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "GameMakerAgent",
+    "shortDescription": "A packaged game-production context layer for Codex and Godot.",
+    "longDescription": "Adds game design guidance, traceable asset-to-Godot delivery, and evidence review while leaving execution to Codex and mature providers.",
+    "developerName": "GameMakerAgent contributors",
+    "category": "Developer Tools",
+    "capabilities": ["Game design", "Godot delivery", "Evidence review"],
+    "defaultPrompt": [
+      "Review a game decision with Studio Advisor.",
+      "Deliver this confirmed feature into my Godot project.",
+      "Review whether this feature has sufficient current evidence."
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Game Delivery"
+  short_description: "Align game intent, assets, Godot implementation, and evidence"
+  default_prompt: "Use $game-delivery to turn this confirmed game feature into a traceable Godot delivery."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,12 @@
+; Test host for the reusable read-only GameMaker Context dock.
+config_version=5
+
+[application]
+config/name="GameMaker Context Dock Fixture"
+
+[display]
+window/size/viewport_width=640
+window/size/viewport_height=360
+
+[rendering]
+renderer/rendering_method="gl_compatibility"

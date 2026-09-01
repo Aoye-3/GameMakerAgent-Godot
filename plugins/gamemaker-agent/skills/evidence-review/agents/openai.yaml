@@ -1,0 +1,4 @@
+interface:
+  display_name: "Evidence Review"
+  short_description: "Review Godot delivery evidence against current acceptance claims"
+  default_prompt: "Use $evidence-review to decide whether this Godot feature has current, sufficient evidence."
