@@ -28,10 +28,12 @@
 - [ADR-004：以 Production Bridge 连接玩法、素材生产与 Godot](decisions/ADR-004-production-bridge-and-godot-native-source-of-truth.md)
 - [ADR-005：GameJam 前先在框架本地 Lab 搭建并测试通用底座](decisions/ADR-005-framework-local-lab-before-game-project.md)
 - [ADR-006：先建立理论框架，再验证真实 Godot，最后执行使用场景 MVP](decisions/ADR-006-theory-framework-before-godot-and-scenario-mvp.md)
+- [ADR-007：预打包的 Codex + Godot 游戏开发语境环境](decisions/ADR-007-prepackaged-codex-godot-context-environment.md)
 
 ### 实施计划
 
 - [GameMaker 框架演进计划](plans/framework-evolution-plan.md)
+- [预打包 Codex + Godot 游戏开发环境执行计划](plans/prepackaged-game-development-environment.md)
 
 ### 调研
 

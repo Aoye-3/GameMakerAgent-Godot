@@ -4,6 +4,11 @@
 
 Active
 
+> **产品语义基线：** V1 的产品终态、安装形态、结构化开发记录和人工创建原生 Godot 项目的
+> 最新决策见 [预打包游戏开发环境执行计划](prepackaged-game-development-environment.md) 与
+> [ADR-007](../decisions/ADR-007-prepackaged-codex-godot-context-environment.md)。本文继续维护任务
+> 状态；旧文字若与 ADR-007 冲突，应在对应任务实施时按该决策修正。
+
 ## 目标
 
 先建立可演练的理论框架，再独立验证真实 Godot 与 Provider 技术能力，最后执行一条从讨论、
@@ -29,6 +34,7 @@ Active
 - [ADR-004](../decisions/ADR-004-production-bridge-and-godot-native-source-of-truth.md)：以 Production Bridge 连接玩法、素材和 Godot 原生实现。
 - [ADR-005](../decisions/ADR-005-framework-local-lab-before-game-project.md)：GameJam 前在框架本地 Lab 搭建通用底座。
 - [ADR-006](../decisions/ADR-006-theory-framework-before-godot-and-scenario-mvp.md)：理论框架、真实 Godot、使用场景 MVP 顺序通过。
+- [ADR-007](../decisions/ADR-007-prepackaged-codex-godot-context-environment.md)：Codex 负责编排，GameMaker 连接游戏语境、素材、Godot 实现和证据。
 
 ## 依赖关系
 
