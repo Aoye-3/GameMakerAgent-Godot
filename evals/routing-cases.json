@@ -1,0 +1,13 @@
+{
+  "schema_version": "0.1",
+  "cases": [
+    { "id": "advisor-gameplay-choice", "request": "比较两种核心循环并建议验证方式", "expected_skill": "studio-advisor" },
+    { "id": "advisor-playtest", "request": "复盘玩家为什么没有注意到目标", "expected_skill": "studio-advisor" },
+    { "id": "delivery-feature", "request": "把已确认的收集功能、角色素材和验收接入 Godot", "expected_skill": "game-delivery" },
+    { "id": "delivery-asset-binding", "request": "按这份 Asset Spec 生成并绑定角色精灵", "expected_skill": "game-delivery" },
+    { "id": "review-evidence", "request": "检查这个 Godot 功能的运行证据是否足够", "expected_skill": "evidence-review" },
+    { "id": "review-stale", "request": "判断截图是否仍对应当前 revision", "expected_skill": "evidence-review" },
+    { "id": "ordinary-bugfix", "request": "修复 inventory.gd 的空引用", "expected_skill": null },
+    { "id": "ordinary-test", "request": "运行现有单元测试并报告失败", "expected_skill": null }
+  ]
+}

@@ -181,7 +181,8 @@ Active
 
 ### Task 1.1：建立 Project Semantic Model 查询合同
 
-**状态：** Pending
+**状态：** Completed — Python Query 已覆盖非 Godot、已有项目、任务局部事实、source revision
+与过期判断；公共 Schema 和自动化测试已建立。
 
 **验收标准：**
 
@@ -195,7 +196,8 @@ Active
 
 ### Task 1.2：定义 Production Card、Asset Spec 与 Godot Binding Draft
 
-**状态：** Pending
+**状态：** Completed as Draft — 三类 Schema、2D PNG 检查器、Implementation Record 与跨制品
+引用审核已实现；真实 Godot 纵切片前不晋升为稳定 1.0。
 
 **验收标准：**
 
@@ -210,7 +212,8 @@ Active
 
 ### Task 1.3：限定三个技能包与上下文路由
 
-**状态：** Pending
+**状态：** Completed as candidate — repo-scoped Plugin 已包含三个 Skill，Context Pack 按 Asset
+Provider、Programmer、Reviewer 裁剪，路由正反例已进入回归。
 
 **验收标准：**
 
@@ -224,7 +227,8 @@ Active
 
 ### Task 1.4：完成假 Provider Delivery Loop
 
-**状态：** Pending
+**状态：** In progress — Provider capability、统一错误、素材失败、未绑定素材、过期证据和
+unsupported capability 已覆盖；完整成功、超时与运行失败演练仍待收口。
 
 **验收标准：**
 

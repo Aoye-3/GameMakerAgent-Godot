@@ -187,5 +187,15 @@ C#、多引擎、Web 创作台、可写 Dock、完整聊天归档，以及未经
 
 ## 下一执行项
 
-先完成 Phase A 工程骨架，再实现 Project Semantic Model 与跨制品 Context Pack；暂不增加更多
-MCP 或游戏 Skill 数量。
+### 2026-09-01 实施快照
+
+- **Completed：** ADR-007、Python/uv 工程骨架、9 类 Schema、Project Semantic Query、结构化
+  record/index、三类 Context Pack、2D PNG 检查、跨制品审核、假 Provider 错误归一化、CLI、
+  `doctor`、repo-scoped Plugin、三个 Skill、godot-ai capability profile、只读 Dock 和统一回归。
+- **In progress：** Checkpoint 1 的完整假 Provider 成功/超时/运行失败矩阵，以及可记录的
+  normalized asset 清单与 Evidence Bundle revision 字段收口。
+- **Pending：** 固定 godot-ai 的真实安装和重复 conformance、真实素材到 Godot Binding、
+  俯视移动收集端到端 MVP、人工价值确认和最终 Promotion Gate。
+
+下一执行项是完成假 Provider 全矩阵与 Evidence 收口，然后进入固定 godot-ai 真实 conformance；
+暂不增加更多 MCP 或游戏 Skill 数量。

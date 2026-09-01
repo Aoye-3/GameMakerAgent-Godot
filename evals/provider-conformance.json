@@ -1,0 +1,16 @@
+{
+  "schema_version": "0.1",
+  "required": [
+    "connect", "project_select", "scene_edit", "script_edit", "resource_import",
+    "start", "stop", "input", "observe", "capture", "diagnostics", "cleanup"
+  ],
+  "optional_with_explicit_degradation": ["pause", "resume", "step", "step_until"],
+  "scenarios": [
+    "connect_existing_project",
+    "edit_scene_script_and_resource",
+    "run_input_observe_capture_diagnostics",
+    "stop_and_cleanup",
+    "reject_unadvertised_capability",
+    "repeat_without_duplicate_project_state"
+  ]
+}
