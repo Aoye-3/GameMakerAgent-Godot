@@ -11,6 +11,7 @@
     "project_state": { "enum": ["non_godot", "godot_project", "stale"] },
     "project_root": { "type": "string", "minLength": 1 },
     "source_revision": { "type": "string", "minLength": 1 },
+    "git_revision": { "type": ["string", "null"] },
     "engine": {
       "type": "object",
       "additionalProperties": false,

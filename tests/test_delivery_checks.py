@@ -2,7 +2,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from gamemaker_agent.assets import inspect_asset
+from gamemaker_agent.assets import inspect_asset, normalize_asset
 from gamemaker_agent.delivery import review_delivery
 from gamemaker_agent.providers import FakeProvider
 
@@ -25,7 +25,9 @@ def _asset_spec() -> dict:
 
 def test_asset_inspector_accepts_matching_rgba_png(tmp_path: Path) -> None:
     image_path = tmp_path / "player.png"
-    Image.new("RGBA", (64, 64), (255, 255, 255, 0)).save(image_path)
+    picture = Image.new("RGBA", (64, 64), (255, 255, 255, 0))
+    picture.putpixel((32, 32), (255, 255, 255, 255))
+    picture.save(image_path)
 
     report = inspect_asset(_asset_spec(), image_path)
 
@@ -70,3 +72,22 @@ def test_fake_provider_reports_unsupported_capability_without_simulating_it() ->
 
     assert not result["ok"]
     assert result["error"]["category"] == "unsupported_capability"
+
+
+def test_blank_and_opaque_rgba_are_not_usable_transparent_sprites(tmp_path: Path) -> None:
+    path = tmp_path / 'sprite.png'
+    for alpha in (0, 255):
+        Image.new('RGBA', (64, 64), (255, 255, 255, alpha)).save(path)
+        assert not inspect_asset(_asset_spec(), path)['accepted']
+
+
+def test_normalization_keeps_source_hash_and_stable_target(tmp_path: Path) -> None:
+    source = tmp_path / 'source.png'
+    picture = Image.new('RGBA', (128, 128))
+    picture.paste((50, 200, 200, 255), (32, 32, 96, 96))
+    picture.save(source)
+    record = normalize_asset(_asset_spec(), source, tmp_path)
+    assert record['path'] == 'res://assets/player.png'
+    assert record['asset_id'] == 'player-sprite'
+    assert len(record['sha256']) == 64
+    assert inspect_asset(_asset_spec(), tmp_path / 'assets/player.png')['accepted']

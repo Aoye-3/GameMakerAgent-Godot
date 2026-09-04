@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 from typing import Any, Sequence
 
+from .assets import inspect_asset, normalize_asset
 from .context import build_context_pack
 from .delivery import review_delivery
 from .doctor import diagnose
@@ -30,6 +31,11 @@ def _parser() -> argparse.ArgumentParser:
     doctor = commands.add_parser("doctor")
     doctor.add_argument("--project", type=Path, default=Path.cwd())
     doctor.add_argument("--godot", type=Path)
+    asset = commands.add_parser('asset')
+    asset.add_argument('operation', choices=['check', 'normalize'])
+    asset.add_argument('--spec', required=True)
+    asset.add_argument('--input', required=True, type=Path)
+    asset.add_argument('--project', type=Path, default=Path.cwd())
     query = commands.add_parser("query")
     query.add_argument("--project", type=Path, default=Path.cwd())
     query.add_argument("--term", action="append", default=[])
@@ -64,6 +70,14 @@ def _parser() -> argparse.ArgumentParser:
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = _parser().parse_args(argv)
+    if args.command == 'asset':
+        spec = _read(args.spec)
+        if args.operation == 'check':
+            result = inspect_asset(spec, args.input)
+            _print(result)
+            return 0 if result['accepted'] else 1
+        _print(normalize_asset(spec, args.input, args.project))
+        return 0
     if args.command == "doctor":
         result = diagnose(args.project, args.godot)
         _print(result)
