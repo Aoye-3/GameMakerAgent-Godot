@@ -7,6 +7,10 @@
 > 公共 Schema、godot-ai capability profile、只读 Godot Dock 和统一回归入口已经建立。真实
 > godot-ai conformance 与完整内容纵切片仍未通过，因此不得宣称成熟 Provider 或产品 MVP 已完成。
 
+**2026-09-04：** Project1 的固定 godot-ai 外部组件与工作区接入配置已准备，等待编辑器启用
+和 Codex 重载后实际验证。请按[手动试用接入](docs/plans/manual-trial-quickstart.md)操作。
+`doctor` 现已区分文件准备与真实连接：静态检查不能返回整套环境就绪。
+
 ## 为什么需要 GameMakerAgent
 
 Codex、Claude Code 等编码 Agent 已经能够修改 Godot 项目；godot-ai、Godot MCP 和编辑器插件

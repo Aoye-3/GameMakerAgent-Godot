@@ -41,8 +41,8 @@ def diagnose(project: Path, godot: Path | None = None) -> dict[str, Any]:
     )
     add(
         "godot_dock",
-        (repo / "godot/addons/gamemaker_context/plugin.cfg").is_file(),
-        "godot/addons/gamemaker_context",
+        (project / "addons/gamemaker_context/plugin.cfg").is_file(),
+        str(project / "addons/gamemaker_context"),
     )
     profiles = list((repo / "adapters/profiles").glob("*.json"))
     profiles_ok = bool(profiles)
@@ -64,4 +64,11 @@ def diagnose(project: Path, godot: Path | None = None) -> dict[str, Any]:
             add("godot", False, str(exc))
     else:
         add("godot", False, f"not found: {godot}")
-    return {"ready": all(item["ok"] for item in checks), "checks": checks}
+    return {
+        "ready": False,
+        "files_ready": all(item["ok"] for item in checks),
+        "provider_connected": None,
+        "conformance_passed": None,
+        "checks": checks,
+        "next_action": "Live MCP connection and repeated conformance have not been verified.",
+    }

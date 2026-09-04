@@ -9,3 +9,8 @@ __pycache__/
 **/.vibegame/gamemaker/artifacts/
 lab/fixtures/**/.godot/
 lab/fixtures/**/.import/
+Project1/project-1/addons/godot_ai/
+Project1/project-1/addons/gamemaker_context/
+.agents/skills/studio-advisor/
+.agents/skills/game-delivery/
+.agents/skills/evidence-review/

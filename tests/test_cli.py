@@ -36,3 +36,13 @@ def test_validate_cli_returns_nonzero_with_field_paths(tmp_path: Path, capsys) -
     output = json.loads(capsys.readouterr().out)
     assert exit_code == 1
     assert output["issues"][0]["path"].startswith("$")
+
+
+def test_doctor_checks_dock_in_target_project_not_framework(tmp_path: Path, capsys) -> None:
+    (tmp_path / "project.godot").write_text('[application]\n', encoding="utf-8")
+
+    assert main(["doctor", "--project", str(tmp_path)]) == 1
+
+    output = json.loads(capsys.readouterr().out)
+    dock = next(check for check in output["checks"] if check["name"] == "godot_dock")
+    assert not dock["ok"]

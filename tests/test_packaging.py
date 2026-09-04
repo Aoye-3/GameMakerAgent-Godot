@@ -50,4 +50,7 @@ def test_doctor_recognizes_the_packaged_fixture_environment() -> None:
 
     report = diagnose(root / "godot")
 
-    assert report["ready"], report
+    assert report["files_ready"], report
+    assert not report["ready"]
+    assert report["provider_connected"] is None
+    assert report["conformance_passed"] is None

@@ -1,0 +1,12 @@
+{
+  "provider_id": "godot-ai",
+  "version": "3.2.4",
+  "revision": "a468a7eedd7dcbbeb0221a297f7e7c50f5ab2b4e",
+  "upstream": "https://github.com/hi-godot/godot-ai",
+  "license": "MIT",
+  "components": ["src/godot_ai", "pyproject.toml", "README.md", "LICENSE", "plugin/addons/godot_ai"],
+  "archive_sha256": "1a00d27dfb5f5ddcd7be0391c6f7b58b15153d76bc7f600b07dc13e78d046808",
+  "initial_lock_sha256": "d3d6f376921d37ab000cdf802c72b21bef33e073241e870fd3402da1c9c976a4",
+  "verified_connection": false,
+  "note": "Installation provenance only; not a capability profile or conformance result."
+}

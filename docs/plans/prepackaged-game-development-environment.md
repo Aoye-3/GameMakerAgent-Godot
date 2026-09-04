@@ -187,6 +187,9 @@ C#、多引擎、Web 创作台、可写 Dock、完整聊天归档，以及未经
 
 ## 下一执行项
 
+2026-09-04 起执行用户确认的[真实手动试用里程碑](godot-manual-trial.md)。以下为历史快照，
+其中“Completed”只表示候选脚手架存在，不表示真实 Provider、行为矩阵或产品门禁通过。
+
 ### 2026-09-01 实施快照
 
 - **Completed：** ADR-007、Python/uv 工程骨架、9 类 Schema、Project Semantic Query、结构化
