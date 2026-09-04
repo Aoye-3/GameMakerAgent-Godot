@@ -55,12 +55,15 @@
 - `doctor` 默认只作静态检查，`files_ready` 不代表已安装到 Codex、已连接或可试玩。
 - `doctor --project Project1/project-1 --live` 只调用身份/会话/编辑器状态读取，检查已保存的
   conformance 制品哈希；不启动游戏、改场景或代替新的功能复验。
+  游戏运行中 `readiness=playing` 仍代表已连接，不应停止游戏才能进行诊断。
 - 项目实际渲染设置已切为 `gl_compatibility`；创建时的 features 标签仍有 Forward Plus，
   以实际 rendering setting 为准。不要仅凭 features 标签判断正在使用的 Renderer。
 - Dock 的 Provider 是最近记录，不是持续联网状态；实时连接以 doctor --live 为准。
 - 截图、原图与原始日志在忽略的 artifacts；新环境缺少这些文件时审核会如实显示证据不足，
   必须重新生成/归档或运行取证，不能从 Git 中的 PASS 标签推断成功。
 - 用户允许内置生图先暂存 C 盘 Codex 目录；项目使用的原图及归一化图已归档到 F 盘。
+  归一化输入不能与最终目标文件相同；中间图片在忽略的 artifacts 内校验，通过后才发布到
+  `res://assets/`，避免原图被覆盖或尚未合格的图片被编辑器提前导入。
 - 最新卡片完整且可编译，但部分为工程执行后补录；下一轮由你检验 Skill 能否真正减少接线工作。
 
 完整交付门禁见 [里程碑](godot-manual-trial.md)。本文件不能作为 PASS 证据。

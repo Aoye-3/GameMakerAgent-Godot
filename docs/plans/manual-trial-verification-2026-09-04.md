@@ -60,3 +60,23 @@ Implementation、Evidence。JSON/Markdown 与哈希元数据进入 Git；`artifa
 - 部分 Decision/Production 记录是执行后补录，未宣称已验证一次独立的制品先行 Skill 自动路由。
 - 新的自然语言“速度再加 20%”应从当前 240 增至 288，这是下一次用户实际体验的验收。
 - 素材艺术质量、玩法手感、语境是否少丢失，由用户确认；尚不晋升或发布公共版本。
+
+## 推送前复核与修复
+
+用户要求测试、修复、维护文档后提交远端。本轮在原工作区新建
+`codex/trial-prepush-validation` 分支，继承已完成的试用实现；不修改 main、不创建 worktree。
+
+复核发现并通过先失败后通过的用例修复三项问题：
+
+1. 实时探测把 `readiness=playing` 误报为未连接。现在以成功查询匹配项目的编辑器状态判断
+   连接；已在真实运行中的 `project-1@2911` 上确认 `provider_connected=true`。
+2. 归一化允许输入与目标为同一文件，会覆盖原图并使来源哈希失真。现在明确拒绝同路径输入。
+3. 归一化中间 PNG 曾写在 Godot 可见的 assets 目录。现在在忽略的 project artifacts 内暂存、
+   检查后才原子替换目标；临时文件在成功或异常后清理，不删除源图。
+
+修复后共 54 项 Python 测试；真实 MCP 4 项 Godot 测试再次通过，原有 Advisor / Runtime Probe /
+Dock smoke 保持通过，项目证据审核 PASS。玩法文件、素材、当前速度和实现内容指纹未改动，
+不伪造新的玩法取证。headless 检查仍有已知根证书存储读取警告，当前未把它消音或宣称修复。
+
+本次远端交付仅为代码、Schema、Skills、技术文档、轻量记录与通用夹具的分支提交；原始截图、
+日志、生图原图、依赖和缓存保持忽略，不发布 release、不推送 research refs、不强推。

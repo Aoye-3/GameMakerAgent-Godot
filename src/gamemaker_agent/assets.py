@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import tempfile
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -70,6 +71,8 @@ def normalize_asset(spec: Mapping[str, Any], source: Path, project: Path) -> dic
     target = (root / spec['normalization']['target_path'].removeprefix('res://')).resolve()
     if not target.is_relative_to(root) or target.suffix.lower() != '.png':
         raise ValueError('Asset target must be a PNG inside the project')
+    if source.resolve() == target:
+        raise ValueError('Asset target must not overwrite the original source')
     with Image.open(source) as raw:
         raw_spec = dict(spec, technical=dict(technical, width=raw.width, height=raw.height))
         report = inspect_asset(raw_spec, source)
@@ -79,14 +82,20 @@ def normalize_asset(spec: Mapping[str, Any], source: Path, project: Path) -> dic
         fitted = ImageOps.contain(raw.convert('RGBA'), size, Image.Resampling.LANCZOS)
         canvas = Image.new('RGBA', size)
         canvas.paste(fitted, ((size[0] - fitted.width) // 2, (size[1] - fitted.height) // 2))
-        target.parent.mkdir(parents=True, exist_ok=True)
-        temporary = target.with_suffix('.normalizing.png')
+    # Keep unvalidated pixels outside Godot's importer-visible asset directories.
+    staging = root / '.vibegame/gamemaker/artifacts'
+    staging.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(dir=staging, suffix='.png', delete=False) as handle:
+        temporary = Path(handle.name)
+    try:
         canvas.save(temporary, format='PNG')
-    report = inspect_asset(spec, temporary)
-    if not report['accepted']:
-        temporary.unlink()
-        raise ValueError(f'Normalization failed validation: {report["issues"]}')
-    temporary.replace(target)
+        report = inspect_asset(spec, temporary)
+        if not report['accepted']:
+            raise ValueError(f'Normalization failed validation: {report["issues"]}')
+        target.parent.mkdir(parents=True, exist_ok=True)
+        temporary.replace(target)
+    finally:
+        temporary.unlink(missing_ok=True)
     return {
         'asset_id': spec['asset_id'], 'artifact_id': spec['normalization']['artifact_id'],
         'path': spec['normalization']['target_path'],

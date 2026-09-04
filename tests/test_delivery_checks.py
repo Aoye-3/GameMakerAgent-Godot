@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import pytest
 from PIL import Image
 
 from gamemaker_agent.assets import inspect_asset, normalize_asset
@@ -91,3 +92,39 @@ def test_normalization_keeps_source_hash_and_stable_target(tmp_path: Path) -> No
     assert record['asset_id'] == 'player-sprite'
     assert len(record['sha256']) == 64
     assert inspect_asset(_asset_spec(), tmp_path / 'assets/player.png')['accepted']
+
+
+def test_normalization_never_overwrites_its_original(tmp_path: Path) -> None:
+    source = tmp_path / 'assets/player.png'
+    source.parent.mkdir()
+    picture = Image.new('RGBA', (128, 128))
+    picture.paste((50, 200, 200, 255), (32, 32, 96, 96))
+    picture.save(source)
+    original = source.read_bytes()
+    with pytest.raises(ValueError, match='original'):
+        normalize_asset(_asset_spec(), source, tmp_path)
+    assert source.read_bytes() == original
+
+
+def test_normalization_validates_in_ignored_staging_before_publishing(tmp_path, monkeypatch):
+    from gamemaker_agent import assets
+
+    source = tmp_path / 'source.png'
+    picture = Image.new('RGBA', (128, 128))
+    picture.paste((50, 200, 200, 255), (32, 32, 96, 96))
+    picture.save(source)
+    target = tmp_path / 'assets/player.png'
+    inspected = []
+
+    def check(spec, path):
+        inspected.append(path)
+        if path != source:
+            assert not target.exists()
+            assert path.is_relative_to(tmp_path / '.vibegame/gamemaker/artifacts')
+        return inspect_asset(spec, path)
+
+    monkeypatch.setattr(assets, 'inspect_asset', check)
+    normalize_asset(_asset_spec(), source, tmp_path)
+    assert len(inspected) == 2
+    assert target.exists()
+    assert not inspected[-1].exists()

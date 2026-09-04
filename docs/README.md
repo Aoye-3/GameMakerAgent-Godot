@@ -34,6 +34,9 @@
 
 - [GameMaker 框架演进计划](plans/framework-evolution-plan.md)
 - [预打包 Codex + Godot 游戏开发环境执行计划](plans/prepackaged-game-development-environment.md)
+- [可亲自使用的 MCP 开发闭环里程碑](plans/godot-manual-trial.md)
+- [Project1 中文试用步骤](plans/manual-trial-quickstart.md)
+- [真实试跑与推送前验证报告](plans/manual-trial-verification-2026-09-04.md)
 
 ### 调研
 

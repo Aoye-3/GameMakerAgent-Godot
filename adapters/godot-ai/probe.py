@@ -22,7 +22,8 @@ async def probe(project: Path) -> dict:
         state = (await client.call_tool('editor_state', {
             'session_id': session['session_id']
         })).data
-        return {'connected': session.get('readiness') == 'ready',
+        # A successful editor query proves connectivity, including while playing.
+        return {'connected': True,
                 'session': session, 'editor_state': state}
 
 

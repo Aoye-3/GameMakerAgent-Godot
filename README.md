@@ -178,7 +178,7 @@ V1 不追求多引擎、多模型编排、大型 UI、自动生成完整游戏�
 | Production Card / Asset Spec / Godot Binding | 两个假 Provider 矩阵通过，Project1 实际记录审核 PASS |
 | godot-ai Provider | 固定 3.2.4 实际 MCP 编辑/运行、重复修改与重连通过 |
 | Asset Provider | 内置 imagegen 已生成并归一化一张真实角色 PNG，稳定绑定通过 |
-| 内部试玩 | 51 项 Python 回归、4 项真实 Godot 测试；四方向/收集/速度 200→240 已运行取证 |
+| 内部试玩 | 54 项 Python 回归、4 项真实 Godot 测试；四方向/收集/速度 200→240 已运行取证 |
 | 完整使用场景 MVP / 晋升 | 待用户制品先行自然语言复演与价值确认；不发布 |
 
 当前工程状态以[真实试跑报告](docs/plans/manual-trial-verification-2026-09-04.md)和
