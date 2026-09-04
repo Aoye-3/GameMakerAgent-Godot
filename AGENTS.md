@@ -1,5 +1,12 @@
 # GameMakerAgent Working Rules
 
+## Workspace storage exception (user confirmed 2026-09-04)
+
+Project code, dependencies, virtual environments, tests and caches stay in the current F: workspace.
+Built-in Codex image generation may temporarily save images in its C: generated-images directory.
+Copy the required original into project artifacts and record its provenance/hash before use.
+This exception does not authorize moving project development, dependencies or caches to C:.
+
 ## Repository Role
 
 本仓库是可迁移、可复用的游戏开发框架，不是具体游戏项目。

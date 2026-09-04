@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "decision_id": "collect-trial-scope",
+  "status": "confirmed",
+  "player_outcome": "四方向移动，接触目标完成一次收集；速度增加 20% 后仍能完成。",
+  "decision": "按用户确认的单场景 2D 纵切片执行。角色采用清晰轮廓的青绿色探索者；单帧、居中 Pivot、不 trim。",
+  "constraints": [
+    "Godot 4.7.2 / GDScript / Compatibility",
+    "复用同一原生项目、节点、输入和稳定素材 ID",
+    "不引入新的 Runtime 或 MCP 产品"
+  ],
+  "source_revision": "sha256:5533a1a81fce0948e33c05e2c6ed3f6ec992628beb27bf4ac00434c1ce234da6",
+  "validation": "由成熟 MCP 真实编辑、运行、输入、观察与截图；本记录补录本轮已执行的用户需求与工程选型，不宣称新增策划确认。"
+}

@@ -19,6 +19,7 @@
       "properties": {
         "features": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
         "main_scene": { "type": ["string", "null"] },
+        "renderer": {"type": ["string", "null"]},
         "input_actions": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
       }
     },

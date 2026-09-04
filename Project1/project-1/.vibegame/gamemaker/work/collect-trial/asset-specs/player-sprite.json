@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1",
+  "asset_id": "player-sprite",
+  "production_id": "collect-trial",
+  "role": "Player-controlled character in a four-direction collection trial",
+  "visual": {
+    "style": "Simple friendly top-down explorer with a clear silhouette",
+    "player_read": "Immediately distinguishable from the gold collection target",
+    "prompt": "Use case: stylized-concept. Asset type: single top-down 2D game character sprite. One small friendly explorer in a teal suit with a pale round helmet, facing down toward the viewer in a top-down game perspective. Bold clean silhouette, simple flat shaded shapes readable when reduced to 64x64 pixels. Entire figure centered with clear empty margins on a square canvas. Genuinely transparent background with alpha; no ground, shadow, checkerboard, frame, text, logo, watermark or extra objects. Single idle pose, not a sprite sheet."
+  },
+  "technical": {
+    "format": "png", "width": 64, "height": 64, "frames": 1,
+    "transparent": true, "pivot": {"x": 0.5, "y": 0.5}, "trim": false,
+    "collision_alignment": "Centered CircleShape2D, radius 16 pixels"
+  },
+  "provenance": {
+    "source_kind": "generated",
+    "license": "LicenseRef-Generated-InternalEvaluation",
+    "source_uri": "provider:imagegen"
+  },
+  "normalization": {"target_path": "res://assets/player.png", "artifact_id": "player-sprite-r1"}
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.1",
+  "context_id": "context-5533a1a81fce",
+  "project_state": "godot_project",
+  "project_root": "F:\\.GameMaker-Agent\\Project1\\project-1",
+  "source_revision": "sha256:5533a1a81fce0948e33c05e2c6ed3f6ec992628beb27bf4ac00434c1ce234da6",
+  "git_revision": "cd40f5cfe817fce8c6cab44d0464186b2d760ccd",
+  "engine": {
+    "features": [
+      "4.7",
+      "Forward Plus"
+    ],
+    "main_scene": "res://scenes/mcp_trial.tscn",
+    "input_actions": [
+      "move_down",
+      "move_left",
+      "move_right",
+      "move_up"
+    ],
+    "renderer": "gl_compatibility"
+  },
+  "facts": [
+    {
+      "kind": "player_verb",
+      "value": "move_down",
+      "source": "project.godot"
+    },
+    {
+      "kind": "player_verb",
+      "value": "move_left",
+      "source": "project.godot"
+    },
+    {
+      "kind": "player_verb",
+      "value": "move_right",
+      "source": "project.godot"
+    },
+    {
+      "kind": "player_verb",
+      "value": "move_up",
+      "source": "project.godot"
+    },
+    {
+      "kind": "scene",
+      "value": "scenes/mcp_trial.tscn",
+      "source": "scenes/mcp_trial.tscn"
+    },
+    {
+      "kind": "script",
+      "value": "scripts/player.gd",
+      "source": "scripts/player.gd"
+    },
+    {
+      "kind": "script",
+      "value": "scripts/target.gd",
+      "source": "scripts/target.gd"
+    },
+    {
+      "kind": "script",
+      "value": "scripts/trial.gd",
+      "source": "scripts/trial.gd"
+    },
+    {
+      "kind": "script",
+      "value": "tests/test_trial.gd",
+      "source": "tests/test_trial.gd"
+    }
+  ]
+}

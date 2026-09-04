@@ -4,6 +4,10 @@
 
 Active
 
+2026-09-04 状态覆盖：Project1 的真实 MCP 安装/连接、编辑/运行、素材绑定、速度修改、重连及
+Core 审核已工程预演通过；详见[实测报告](manual-trial-verification-2026-09-04.md)。本文各阶段
+保留原任务分解，旧的待办描述不能覆盖该实测状态。下一步为同项目自然语言复演及人工价值确认。
+
 > **产品语义基线：** V1 的产品终态、安装形态、结构化开发记录和人工创建原生 Godot 项目的
 > 最新决策见 [预打包游戏开发环境执行计划](prepackaged-game-development-environment.md) 与
 > [ADR-007](../decisions/ADR-007-prepackaged-codex-godot-context-environment.md)。本文继续维护任务
@@ -12,7 +16,7 @@ Active
 ## 目标
 
 先建立可演练的理论框架，再独立验证真实 Godot 与 Provider 技术能力，最后执行一条从讨论、
-查询、素材生成到 godot-ai 创建原生项目、完成代码基础和嵌入素材的使用场景 MVP。MVP 通过后，
+查询、素材生成到 godot-ai 编辑用户已创建的原生项目、完成代码基础和嵌入素材的使用场景 MVP。MVP 通过后，
 再以 TapTapGameJam 的真实制作过程验证复杂场景和能力晋升。
 
 ## 成功标准
@@ -436,12 +440,12 @@ Production Card -> Asset Spec -> Provider -> Godot Binding -> Runtime Evidence -
 | Production Model 成为第二套 SceneTree | 高 | 只保存任务增量与可丢弃查询；Godot 始终是真实源 |
 | 素材生成成功被误判为内容完成 | 高 | 强制经过归一化、Binding、运行视觉与状态验证 |
 
-## 当前开放问题
+## 已收口的首轮问题与剩余验证
 
-1. godot-ai 固定 revision 与当前 Godot 4.7.2 基线是否完全兼容？
-2. 使用场景 MVP 是否明确只支持 GDScript，暂不覆盖 C#？
-3. MVP 的小型游戏目标和最小玩家交互是什么？
-4. 项目侧语义状态采用 Group、`_gamemaker_state()`，还是两者结合？
-5. MVP Asset Spec 是否只覆盖一张 2D 静态或序列图素材？
+1. 固定 godot-ai 3.2.4 与 Godot 4.7.2 已通过本轮使用的操作，不宣称所有上游工具完全兼容。
+2. 已限定 GDScript、2D、单场景，不覆盖 C#。
+3. 已固定四方向移动、一次接触收集和速度提高 20%。
+4. 本轮通过真实运行节点读取 items_collected、位置和目标存在性；不引入额外状态镜像。
+5. 已限定一张单帧 PNG、居中 Pivot、不 trim；不扩展动画生产。
 
-这些问题会改变项目实现，必须在对应 Task 开始前由项目事实或人工决策确认。
+剩余问题是用户能否通过自然语言复演，在真实开发中减少语境丢失、素材错位和手工接线。

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -20,6 +21,8 @@ def _read_json_directory(path: Path) -> list[Any]:
 
 
 def build_context_pack(project_root: Path, work_id: str, audience: str) -> dict[str, Any]:
+    if not re.fullmatch(r'[a-zA-Z0-9][a-zA-Z0-9._-]*', work_id):
+        raise ValueError('Invalid work_id')
     work = project_root.resolve() / ".vibegame" / "gamemaker" / "work" / work_id
     if not work.is_dir():
         raise FileNotFoundError(f"Unknown GameMaker work: {work_id}")
@@ -27,15 +30,19 @@ def build_context_pack(project_root: Path, work_id: str, audience: str) -> dict[
         raise ValueError(f"Unknown context audience: {audience}")
 
     decision = work / "decision.md"
+    confirmed = _read_json(work / 'decision-card.json')
     common = {
         "schema_version": "0.1",
         "work_id": work_id,
         "audience": audience,
-        "decision_summary": decision.read_text(encoding="utf-8") if decision.is_file() else None,
+        "decision": confirmed,
+        "decision_summary": (confirmed['decision'] if confirmed else
+                             decision.read_text('utf-8') if decision.is_file() else None),
         "production_card": _read_json(work / "production-card.json"),
     }
     if audience == "asset-provider":
-        common["asset_specs"] = _read_json_directory(work / "asset-specs")
+        return {"schema_version": "0.1", "work_id": work_id, "audience": audience,
+                "asset_specs": _read_json_directory(work / "asset-specs")}
     elif audience == "programmer":
         common.update(
             {
@@ -45,6 +52,9 @@ def build_context_pack(project_root: Path, work_id: str, audience: str) -> dict[
             }
         )
     else:
+        common.pop('decision')
+        common.pop('decision_summary')
+        common['acceptance'] = (common.pop('production_card') or {}).get('acceptance', [])
         common.update(
             {
                 "implementation": _read_json(work / "implementation.json"),

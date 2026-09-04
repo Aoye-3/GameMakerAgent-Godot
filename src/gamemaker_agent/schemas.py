@@ -20,6 +20,7 @@ SCHEMA_FILES = {
     "evidence-bundle": "evidence-bundle.schema.json",
     "godot-binding": "godot-binding.schema.json",
     "implementation-record": "implementation-record.schema.json",
+    "normalized-assets": "normalized-assets.schema.json",
     "production-card": "production-card.schema.json",
     "project-context": "project-context.schema.json",
     "provider-capability-profile": "provider-capability-profile.schema.json",

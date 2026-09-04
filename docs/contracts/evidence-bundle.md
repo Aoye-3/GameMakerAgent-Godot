@@ -12,12 +12,13 @@ Evidence Bundle 把“Agent 说已经完成”转化为可重放、可定位到�
 ## 必填信息
 
 - 唯一 `evidence_id` 和 Schema 版本；
-- 项目仓库标识与 Git revision；
+- 项目仓库标识、实现 ID、内容指纹；ProjectContext 同时保留 Git revision；
+- Provider 身份/版本、session ID、run ID，不能为旧证据补造；
 - GameMaker、Runtime Adapter、Godot 和 MCP 版本；
 - 测试场景与验证目标；
 - 初始条件和规范化输入轨迹；
 - 运行前后语义状态及断言结果；
-- 决定性截图或明确说明该验证不需要截图；
+- 当前 V1 视觉纵切片的运行截图，以及每个制品的路径与 SHA-256；
 - 本次会话的错误与警告摘要；
 - 开始、结束时间和运行时定位；
 - 证据产生者及 Reviewer 结论。
@@ -39,3 +40,8 @@ Evidence Bundle 把“Agent 说已经完成”转化为可重放、可定位到�
 - `insufficient_evidence`：证据缺失、过期、来源不一致或不可重放。
 
 机器可读草案见 [`schemas/evidence-bundle.schema.json`](../../schemas/evidence-bundle.schema.json)。
+
+当前入口为 `gamemaker evidence review --project <path> --work <id>`：读取真实项目、当前源码 /
+PNG / 导入配置指纹、Production、Normalized Asset、Binding 节点和资源引用，再验证证据哈希。
+旧 `--input` 文件模式仅辅助诊断，不能返回 PASS。索引可重建，Dock 还会检查源码与记录哈希，
+不会把旧索引的 PASS 当成当前事实。记录为纯本地证据，不是防恶意伪造的远程签名认证。

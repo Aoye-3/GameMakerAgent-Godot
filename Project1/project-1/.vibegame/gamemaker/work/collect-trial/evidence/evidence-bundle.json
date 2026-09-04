@@ -1,0 +1,247 @@
+{
+  "schema_version": "0.1",
+  "evidence_id": "collect-trial-r1203103-3",
+  "implementation": {
+    "implementation_id": "collect-trial-speed240",
+    "source_revision": "sha256:5533a1a81fce0948e33c05e2c6ed3f6ec992628beb27bf4ac00434c1ce234da6"
+  },
+  "runtime": {
+    "provider_id": "godot-ai",
+    "version": "3.2.4",
+    "session_id": "project-1@2911",
+    "run_id": "r1203103-3"
+  },
+  "source": {
+    "repository": "Project1/project-1",
+    "revision": "sha256:5533a1a81fce0948e33c05e2c6ed3f6ec992628beb27bf4ac00434c1ce234da6",
+    "dirty": true
+  },
+  "toolchain": {
+    "framework": "GameMaker internal candidate",
+    "runtime_adapter": "godot-ai@a468a7eedd7dcbbeb0221a297f7e7c50f5ab2b4e",
+    "engine": "Godot 4.7.2",
+    "control_provider": "Codex MCP"
+  },
+  "scenario": {
+    "id": "collect-speed240",
+    "goal": "四方向移动，接触目标完成一次收集；速度增加 20% 后仍能完成。",
+    "initial_conditions": {
+      "items_collected": 0,
+      "position": {
+        "x": 220,
+        "y": 300
+      },
+      "speed": 240
+    }
+  },
+  "input_trace": [
+    {
+      "action": "move_up",
+      "actions_pressed_at_end": [],
+      "applied": [
+        {
+          "action": "move_up",
+          "at_frame": 0,
+          "pressed": true
+        },
+        {
+          "action": "move_up",
+          "at_frame": 60,
+          "pressed": false
+        }
+      ],
+      "completed": true,
+      "frames_elapsed": 63,
+      "op": "input_sequence",
+      "source": "game",
+      "steps_applied": 2,
+      "observation": {
+        "items_collected": 0,
+        "position": {
+          "x": 220,
+          "y": 240
+        },
+        "speed": 240,
+        "target_exists": true
+      }
+    },
+    {
+      "action": "move_down",
+      "actions_pressed_at_end": [],
+      "applied": [
+        {
+          "action": "move_down",
+          "at_frame": 0,
+          "pressed": true
+        },
+        {
+          "action": "move_down",
+          "at_frame": 60,
+          "pressed": false
+        }
+      ],
+      "completed": true,
+      "frames_elapsed": 63,
+      "op": "input_sequence",
+      "source": "game",
+      "steps_applied": 2,
+      "observation": {
+        "items_collected": 0,
+        "position": {
+          "x": 220,
+          "y": 300
+        },
+        "speed": 240,
+        "target_exists": true
+      }
+    },
+    {
+      "action": "move_left",
+      "actions_pressed_at_end": [],
+      "applied": [
+        {
+          "action": "move_left",
+          "at_frame": 0,
+          "pressed": true
+        },
+        {
+          "action": "move_left",
+          "at_frame": 60,
+          "pressed": false
+        }
+      ],
+      "completed": true,
+      "frames_elapsed": 63,
+      "op": "input_sequence",
+      "source": "game",
+      "steps_applied": 2,
+      "observation": {
+        "items_collected": 0,
+        "position": {
+          "x": 160,
+          "y": 300
+        },
+        "speed": 240,
+        "target_exists": true
+      }
+    },
+    {
+      "action": "move_right",
+      "actions_pressed_at_end": [],
+      "applied": [
+        {
+          "action": "move_right",
+          "at_frame": 0,
+          "pressed": true
+        },
+        {
+          "action": "move_right",
+          "at_frame": 60,
+          "pressed": false
+        }
+      ],
+      "completed": true,
+      "frames_elapsed": 63,
+      "op": "input_sequence",
+      "source": "game",
+      "steps_applied": 2,
+      "observation": {
+        "items_collected": 0,
+        "position": {
+          "x": 220,
+          "y": 300
+        },
+        "speed": 240,
+        "target_exists": true
+      }
+    },
+    {
+      "actions_pressed_at_end": [],
+      "applied": [
+        {
+          "action": "move_right",
+          "at_frame": 0,
+          "pressed": true
+        },
+        {
+          "action": "move_right",
+          "at_frame": 480,
+          "pressed": false
+        }
+      ],
+      "completed": true,
+      "frames_elapsed": 483,
+      "op": "input_sequence",
+      "source": "game",
+      "steps_applied": 2
+    }
+  ],
+  "observations": {
+    "before": {
+      "items_collected": 0,
+      "position": {
+        "x": 220,
+        "y": 300
+      },
+      "speed": 240,
+      "target_exists": true
+    },
+    "after": {
+      "items_collected": 1,
+      "position": {
+        "x": 700,
+        "y": 300
+      },
+      "speed": 240,
+      "target_exists": false
+    }
+  },
+  "assertions": [
+    {
+      "description": "四方向输入均改变玩家位置",
+      "passed": true
+    },
+    {
+      "description": "items_collected 从 0 变为 1 且 Target 消失",
+      "passed": true
+    },
+    {
+      "description": "速度从 200 提高 20% 至 240",
+      "passed": true
+    },
+    {
+      "description": "生成的角色 PNG 以稳定 Binding 出现在运行截图",
+      "passed": true
+    },
+    {
+      "description": "当前运行和编辑器没有错误",
+      "passed": true
+    }
+  ],
+  "diagnostics": {
+    "errors": [],
+    "warnings": []
+  },
+  "artifacts": [
+    {
+      "kind": "screenshot",
+      "path": ".vibegame/gamemaker/artifacts/run5-collected.png",
+      "sha256": "69e3c143d937090ec9f9d9bd2e0c03b969a98fdd1fd1202975ea2c226ac96d34",
+      "stale_frame": false
+    },
+    {
+      "kind": "trace",
+      "path": ".vibegame/gamemaker/artifacts/run5-observations.json",
+      "sha256": "7e99ff8119d229adacc130b4d8a84713dfa17038002fe61a06785829527706db"
+    }
+  ],
+  "timing": {
+    "started_at": "2026-09-04T11:49:19Z",
+    "finished_at": "2026-09-04T11:50:58Z"
+  },
+  "review": {
+    "reviewer": "Codex + project-aware Context Core",
+    "verdict": "pass",
+    "notes": "现场状态、方向位置、截图和日志均已检查。输入帧为 Provider 时间线，不宣称确定性物理步进。当前卡片为本轮执行补录；初次速度 200 的原始证据见 conformance。 脚本改动已实测拒绝旧证据，恢复后本次重新运行取证。"
+  }
+}

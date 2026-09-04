@@ -1,0 +1,50 @@
+{
+  "session_id": "project-1@2911",
+  "source": "actual MCP test_run",
+  "result": {
+    "duration_ms": 102,
+    "edited_scene": "res://scenes/mcp_trial.tscn",
+    "failed": 0,
+    "passed": 4,
+    "results": [
+      {
+        "assertion_count": 1,
+        "duration_ms": 98,
+        "message": "",
+        "passed": true,
+        "suite": "trial",
+        "test": "test_dock_load_and_refresh_are_read_only"
+      },
+      {
+        "assertion_count": 4,
+        "duration_ms": 0,
+        "message": "",
+        "passed": true,
+        "suite": "trial",
+        "test": "test_four_custom_actions_are_unique"
+      },
+      {
+        "assertion_count": 2,
+        "duration_ms": 1,
+        "message": "",
+        "passed": true,
+        "suite": "trial",
+        "test": "test_no_duplicate_root_children"
+      },
+      {
+        "assertion_count": 3,
+        "duration_ms": 2,
+        "message": "",
+        "passed": true,
+        "suite": "trial",
+        "test": "test_scene_has_player_visual_and_collision"
+      }
+    ],
+    "skipped": 0,
+    "suite_count": 1,
+    "suites_run": [
+      "trial"
+    ],
+    "total": 4
+  }
+}

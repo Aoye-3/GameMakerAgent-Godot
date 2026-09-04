@@ -1,0 +1,106 @@
+{
+  "schema_version": "0.1",
+  "provider_id": "godot-ai",
+  "provider_version": "3.2.4",
+  "provider_revision": "a468a7eedd7dcbbeb0221a297f7e7c50f5ab2b4e",
+  "project": "F:/.GameMaker-Agent/Project1/project-1",
+  "reconnected": true,
+  "sessions": [
+    "project-1@74b7",
+    "project-1@2911"
+  ],
+  "observed_capabilities": [
+    "connect",
+    "project_select",
+    "scene_edit",
+    "script_edit",
+    "resource_import",
+    "start",
+    "stop",
+    "input",
+    "observe",
+    "capture",
+    "diagnostics"
+  ],
+  "not_claimed": [
+    "pause",
+    "deterministic step",
+    "step_until"
+  ],
+  "rounds": [
+    {
+      "passed": true,
+      "session_id": "project-1@74b7",
+      "run_id": "r650553-1",
+      "speed": 200,
+      "source_revision": "sha256:8cafbdbcc3b02c6a4eec3f0e78e8386603b98915b790945fdaac84dd809428e4",
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "path": ".vibegame/gamemaker/artifacts/run1-collected.png",
+          "sha256": "4c008852e61566e5ccffc411e384304ad4012f31bad70ca168cca8defbde476c"
+        },
+        {
+          "kind": "trace",
+          "path": ".vibegame/gamemaker/artifacts/run1-observations.json",
+          "sha256": "3128c168fa6c5257eea18604bd343cc8cd2522f579930a10869e94bc4d832421"
+        }
+      ]
+    },
+    {
+      "passed": true,
+      "session_id": "project-1@2911",
+      "run_id": "r82629-1",
+      "speed": 240,
+      "source_revision": "sha256:7bce964872902a196b9c0861af6046c1ec2cd240b40b8ad48c3622c32ca331a9",
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "path": ".vibegame/gamemaker/artifacts/run3-collected.png",
+          "sha256": "69e3c143d937090ec9f9d9bd2e0c03b969a98fdd1fd1202975ea2c226ac96d34"
+        },
+        {
+          "kind": "trace",
+          "path": ".vibegame/gamemaker/artifacts/run3-observations.json",
+          "sha256": "eb4f4625263791acb13258c76d67ae243695df3af73839475a3f3dcb398cb952"
+        }
+      ]
+    },
+    {
+      "passed": true,
+      "session_id": "project-1@2911",
+      "run_id": "r1203103-3",
+      "speed": 240,
+      "source_revision": "sha256:5533a1a81fce0948e33c05e2c6ed3f6ec992628beb27bf4ac00434c1ce234da6",
+      "artifacts": [
+        {
+          "kind": "screenshot",
+          "path": ".vibegame/gamemaker/artifacts/run5-collected.png",
+          "sha256": "69e3c143d937090ec9f9d9bd2e0c03b969a98fdd1fd1202975ea2c226ac96d34",
+          "stale_frame": false
+        },
+        {
+          "kind": "trace",
+          "path": ".vibegame/gamemaker/artifacts/run5-observations.json",
+          "sha256": "7e99ff8119d229adacc130b4d8a84713dfa17038002fe61a06785829527706db"
+        }
+      ]
+    }
+  ],
+  "negative_probes": [
+    {
+      "expected": "insufficient_evidence",
+      "category": "stale_evidence",
+      "artifact": {
+        "kind": "trace",
+        "path": ".vibegame/gamemaker/artifacts/stale-rejection.json",
+        "sha256": "2613f4c53f29638c657b30984db2365371edd846bb42c79afbfc88d60c4f96d4"
+      }
+    }
+  ],
+  "limitations": [
+    "实际输入为 render-frame 时间线，不是确定性物理模拟。",
+    "一次被人工输入干扰的中间运行不计入通过矩阵。",
+    "首次运行记录是事后汇总，不伪造开始结束时间；最新 Evidence 使用实际记录时间。"
+  ]
+}

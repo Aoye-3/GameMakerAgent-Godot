@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1",
+  "assets": [
+    {
+      "asset_id": "player-sprite",
+      "artifact_id": "player-sprite-r1",
+      "path": "res://assets/player.png",
+      "sha256": "3fed1fcfe0ec42446d86ec75faa105664a8c2d07e531886ef645efd1a104eec6",
+      "source_sha256": "6691f5777f10520de6ed08a488946a001310e6bdf405b0344d59215b48ab8fa7",
+      "source_path": ".vibegame/gamemaker/artifacts/player-raw.png",
+      "provenance": {
+        "source_kind": "generated",
+        "license": "LicenseRef-Generated-InternalEvaluation",
+        "source_uri": "provider:imagegen"
+      },
+      "operations": [
+        "RGBA conversion",
+        "Lanczos contain",
+        "transparent canvas padding"
+      ]
+    }
+  ]
+}

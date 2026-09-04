@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "assets"],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "assets": {"type": "array", "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["asset_id", "artifact_id", "path", "sha256", "source_sha256", "source_path", "provenance", "operations"],
+      "properties": {
+        "asset_id": {"type": "string", "minLength": 1},
+        "artifact_id": {"type": "string", "minLength": 1},
+        "path": {"type": "string", "pattern": "^res://"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "source_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "source_path": {"type": "string", "minLength": 1},
+        "provenance": {"type": "object", "required": ["source_kind", "license"], "properties": {"source_kind": {"type": "string"}, "license": {"type": "string", "minLength": 1}}},
+        "operations": {"type": "array", "items": {"type": "string"}}
+      }
+    }}
+  }
+}

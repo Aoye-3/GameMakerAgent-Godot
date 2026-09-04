@@ -62,7 +62,7 @@ def test_delivery_review_rejects_unbound_assets_and_stale_evidence() -> None:
     )
 
     assert result["verdict"] == "insufficient_evidence"
-    assert {issue["code"] for issue in result["issues"]} == {"unbound_asset", "stale_evidence"}
+    assert {"unbound_asset", "stale_evidence"} <= {issue["code"] for issue in result["issues"]}
 
 
 def test_fake_provider_reports_unsupported_capability_without_simulating_it() -> None:

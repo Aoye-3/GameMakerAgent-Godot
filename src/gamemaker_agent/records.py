@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Mapping
 
-from .project import project_revision
+from .delivery import review_work
+from .project import project_revision, source_manifest
 from .schemas import SchemaCatalog
 
 ARTIFACT_PATHS = {
@@ -16,6 +18,7 @@ ARTIFACT_PATHS = {
     "project-context": "project-context.json",
     "production-card": "production-card.json",
     "implementation-record": "implementation.json",
+    "normalized-assets": "normalized-assets.json",
     "evidence-bundle": "evidence/evidence-bundle.json",
 }
 SAFE_ID = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9._-]*$")
@@ -58,10 +61,16 @@ def rebuild_index(project_root: Path) -> dict[str, Any]:
                 "path": work_root.relative_to(project_root).as_posix(),
                 "production_card": card.relative_to(project_root).as_posix(),
                 "status": status,
+                "record_files": {
+                    p.relative_to(project_root).as_posix():
+                    hashlib.sha256(p.read_bytes()).hexdigest()
+                    for p in sorted(work_root.rglob('*'))
+                    if p.is_file() and p.suffix in {'.json', '.md'}
+                },
                 "updated_at": datetime.now(UTC).isoformat(),
             }
             if evidence.is_file():
-                review = json.loads(evidence.read_text(encoding="utf-8")).get("review", {})
+                review = review_work(project_root, work_root.name)
                 verdict = review.get("verdict", "insufficient_evidence")
                 entry["verdict"] = verdict
                 entry["status"] = {
@@ -73,6 +82,7 @@ def rebuild_index(project_root: Path) -> dict[str, Any]:
     index = {
         "schema_version": "0.1",
         "project_revision": project_revision(project_root),
+        "source_files": source_manifest(project_root),
         "works": works,
     }
     issues = SchemaCatalog().validate("work-index", index)
@@ -95,6 +105,12 @@ def record_artifact(
         raise ValueError(f"Invalid {kind} at {issue.path}: {issue.message}")
     work_root = project_root.resolve() / ".vibegame" / "gamemaker" / "work" / work_id
     path = _artifact_path(work_root, kind, artifact)
+    if not path.resolve().is_relative_to(work_root):
+        raise ValueError('Artifact path escapes work directory')
     _write_json(path, artifact)
+    if kind == 'decision-card':
+        (work_root / 'decision.md').write_text(
+            '# Confirmed decision\n\n' + artifact['decision'] + '\n', encoding='utf-8'
+        )
     rebuild_index(project_root.resolve())
     return path

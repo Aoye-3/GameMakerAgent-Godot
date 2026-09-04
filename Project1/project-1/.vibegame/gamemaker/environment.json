@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "project": "F:/.GameMaker-Agent/Project1/project-1",
+  "provider_status": "godot-ai 3.2.4: connected and real trial verified (recorded 2026-09-04)",
+  "provider_id": "godot-ai",
+  "provider_version": "3.2.4",
+  "session_id": "project-1@2911",
+  "last_error": null,
+  "conformance": "conformance.json",
+  "godot": "4.7.2",
+  "renderer": "gl_compatibility",
+  "asset_provider": {
+    "provider_id": "imagegen",
+    "status": "generated and normalized",
+    "license": "LicenseRef-Generated-InternalEvaluation"
+  },
+  "image_storage_exception": "User allows Codex C: image temp files; project original and normalized asset archived on F:."
+}

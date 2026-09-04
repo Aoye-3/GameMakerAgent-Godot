@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "project_revision": "sha256:5533a1a81fce0948e33c05e2c6ed3f6ec992628beb27bf4ac00434c1ce234da6",
+  "source_files": {
+    "icon.svg": "6c80384360a5b269d1054bfb27241258154e2cc8167c522016fdc1820e84e0f8",
+    "icon.svg.import": "235b9888c4d83aaf2d50a3d62eb0d3bfe3a33b59d7dd88737d425f032379c82d",
+    "project.godot": "25faf713434acf50934a653205450ddc62ed39ea03b6ae9d3cd4db1d017c0927",
+    "assets/player.png": "3fed1fcfe0ec42446d86ec75faa105664a8c2d07e531886ef645efd1a104eec6",
+    "assets/player.png.import": "7b1d4332de02456b2fc56157f525ae01e6fdd0a030ca7262fd69d80d327b6ce2",
+    "scenes/mcp_trial.tscn": "dcb95d6bdee2437ed676306a7291294c79609545d9d84ccb642a1d2d58ed3543",
+    "scripts/player.gd": "b0c00ad71ac7fba54583030708d0ee88e97f293c6e45ebb31900b23114543b71",
+    "scripts/player.gd.uid": "468870b2b5207415c341cbec1efb28648a28126668d10b91aa20c770e9857459",
+    "scripts/target.gd": "48f213cda7cfe68d3873663c476136d851f0ba9931b38be4e633f7e771c7eb61",
+    "scripts/target.gd.uid": "1cb37b91939caf1ff2cf1fe0159091ad3db611d36d6fcd90d3e002a4117c3285",
+    "scripts/trial.gd": "eba42a4f774ecbc7ec040f917d900529ffc71cd4397336bebcb98fc87bccd015",
+    "scripts/trial.gd.uid": "5e3ce1474bf226636306a4be7e43c8c6ad2be17341736e1fdebc89d79b330704",
+    "tests/test_trial.gd": "8c40c113543d94771bceb63859e1b915f9f3fa77ab088af6d96c2c0ab6f1415f",
+    "tests/test_trial.gd.uid": "12e0973733835cd819c65afae4d042b939a0b77c23c4ff92321782eb053a7627"
+  },
+  "works": [
+    {
+      "work_id": "collect-trial",
+      "path": ".vibegame/gamemaker/work/collect-trial",
+      "production_card": ".vibegame/gamemaker/work/collect-trial/production-card.json",
+      "status": "verified",
+      "record_files": {
+        ".vibegame/gamemaker/work/collect-trial/asset-specs/player-sprite.json": "bca075a778e2f3664d54dbd05bd3fc67a40abb6eb907a225c86c63c91b6a4c99",
+        ".vibegame/gamemaker/work/collect-trial/decision-card.json": "832e515e5612829eff8d716652ee562d6d83d3ad989aa36501a49f23be609ad4",
+        ".vibegame/gamemaker/work/collect-trial/decision.md": "9a84922ad9f02151294fffcc18fcbe6249807ef3ea7ab5067a9ae8bf7a4a9003",
+        ".vibegame/gamemaker/work/collect-trial/evidence/evidence-bundle.json": "34812502644f5c3dd1e171c97cb4ac5c4feffad94f49160adbf4b0918b08b28b",
+        ".vibegame/gamemaker/work/collect-trial/godot-bindings/player-visual.json": "55774363500d1e5344da782638d1e1959eca3a72fe6d9425c9fc8a0821ad2efe",
+        ".vibegame/gamemaker/work/collect-trial/implementation.json": "9a48a8abec43c8fc55ed5280164185f62d88cdb1082eb22f62d2a9a336de1e5f",
+        ".vibegame/gamemaker/work/collect-trial/normalized-assets.json": "1d03f07b700485a07d1b079061db0b5879822490b6bc38f2255697c44355a22e",
+        ".vibegame/gamemaker/work/collect-trial/production-card.json": "eb314cbdc264dcac1b46ba632eec4a5a91f4f011d7000f7d69f89df4a1988517",
+        ".vibegame/gamemaker/work/collect-trial/project-context.json": "63a553595f31e692dc68e66e95a099ce3160c8ad94fe1fd2e0aa4e66192ba183"
+      },
+      "updated_at": "2026-09-04T12:00:37.221277+00:00",
+      "verdict": "pass"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1",
+  "production_id": "collect-trial",
+  "project_context_id": "context-5533a1a81fce",
+  "decision_id": "collect-trial-scope",
+  "player_outcome": "四方向移动，接触目标完成一次收集；速度增加 20% 后仍能完成。",
+  "beat": "移动 → 接触金色目标 → 计数增加并移除目标",
+  "reuse": [
+    "scenes/mcp_trial.tscn",
+    "四个 move_* 输入",
+    "player-sprite / player-visual"
+  ],
+  "new_assets": [
+    "player-sprite"
+  ],
+  "acceptance": [
+    "四方向输入均改变玩家位置",
+    "items_collected 从 0 变为 1 且 Target 消失",
+    "速度从 200 提高 20% 至 240",
+    "生成的角色 PNG 以稳定 Binding 出现在运行截图",
+    "当前运行和编辑器没有错误"
+  ]
+}

@@ -66,6 +66,7 @@ def normalize_asset(spec: Mapping[str, Any], source: Path, project: Path) -> dic
     if technical['frames'] != 1 or technical['trim']:
         raise ValueError('Trial normalizer supports single-frame, untrimmed sprites only')
     root = project.resolve()
+    source_relative = source.resolve().relative_to(root).as_posix()
     target = (root / spec['normalization']['target_path'].removeprefix('res://')).resolve()
     if not target.is_relative_to(root) or target.suffix.lower() != '.png':
         raise ValueError('Asset target must be a PNG inside the project')
@@ -91,7 +92,7 @@ def normalize_asset(spec: Mapping[str, Any], source: Path, project: Path) -> dic
         'path': spec['normalization']['target_path'],
         'sha256': hashlib.sha256(target.read_bytes()).hexdigest(),
         'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
-        'source_path': source.resolve().relative_to(root).as_posix(),
+        'source_path': source_relative,
         'provenance': spec['provenance'],
         'operations': ['RGBA conversion', 'Lanczos contain', 'transparent canvas padding'],
     }

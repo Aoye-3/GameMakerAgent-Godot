@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1",
+  "implementation_id": "collect-trial-speed240",
+  "production_id": "collect-trial",
+  "source_revision": "sha256:5533a1a81fce0948e33c05e2c6ed3f6ec992628beb27bf4ac00434c1ce234da6",
+  "summary": "MCP 创建场景、脚本、输入、碰撞和素材绑定；同项目增量修改 speed 200 → 240，无重复节点或输入。Codex Core 归一化素材并整理证据。",
+  "files": [
+    "res://project.godot",
+    "res://scenes/mcp_trial.tscn",
+    "res://scripts/player.gd",
+    "res://scripts/trial.gd",
+    "res://scripts/target.gd",
+    "res://assets/player.png",
+    "res://assets/player.png.import",
+    "res://tests/test_trial.gd"
+  ],
+  "binding_ids": [
+    "player-visual"
+  ]
+}

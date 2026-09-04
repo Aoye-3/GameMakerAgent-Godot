@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://coqkau7re20fq"]
+
+[ext_resource type="Script" uid="uid://qkjdx01gfqqu" path="res://scripts/trial.gd" id="1_35sxa"]
+[ext_resource type="Script" uid="uid://d4hkfg0aj5x7l" path="res://scripts/player.gd" id="2_0tqy4"]
+[ext_resource type="Texture2D" uid="uid://csh3hynsuxgjo" path="res://assets/player.png" id="3_arxit"]
+[ext_resource type="Script" uid="uid://drd8xj8jfu7p4" path="res://scripts/target.gd" id="4_iqy3c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wihss"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nglo4"]
+radius = 24.0
+
+[node name="Trial" type="Node2D" unique_id=1618895870]
+script = ExtResource("1_35sxa")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1797694123]
+position = Vector2(220, 300)
+script = ExtResource("2_0tqy4")
+
+[node name="Visual" type="Sprite2D" parent="Player" unique_id=724076267]
+texture = ExtResource("3_arxit")
+
+[node name="Collision" type="CollisionShape2D" parent="Player" unique_id=1097834076]
+shape = SubResource("CircleShape2D_wihss")
+
+[node name="Target" type="Area2D" parent="." unique_id=80860562]
+position = Vector2(580, 300)
+script = ExtResource("4_iqy3c")
+
+[node name="Collision" type="CollisionShape2D" parent="Target" unique_id=1577728344]
+shape = SubResource("CircleShape2D_nglo4")

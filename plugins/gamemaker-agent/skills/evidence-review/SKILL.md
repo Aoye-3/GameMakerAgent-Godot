@@ -9,6 +9,7 @@ Review claims, not effort or tool success.
 
 1. Load the Production Card acceptance claims, Implementation Record, Godot Bindings, Evidence Bundle, and current project revision.
 2. Reject evidence whose implementation ID or source revision differs from the current implementation.
+   Run `gamemaker evidence review --project <path> --work <id>` against stored records and current native files. The file-only `--input` compatibility path cannot establish PASS. Missing runtime identity, screenshots, artifact hashes or assertions means insufficient evidence; never invent them for old records.
 3. Evaluate separately:
    - static evidence: required scene, script, Resource, input and binding facts exist;
    - runtime state: the recorded input trace produces the required observable state;

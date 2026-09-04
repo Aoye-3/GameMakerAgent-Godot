@@ -10,6 +10,7 @@ def test_all_public_schemas_are_discoverable_and_valid() -> None:
         "evidence-bundle",
         "godot-binding",
         "implementation-record",
+        "normalized-assets",
         "production-card",
         "project-context",
         "provider-capability-profile",

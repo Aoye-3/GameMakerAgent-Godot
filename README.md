@@ -3,13 +3,13 @@
 让 Codex 等通用编码 Agent 理解如何把**玩法设计、素材生产、Godot 实现与运行验证**连接成
 一条可信的游戏开发链路。
 
-> **当前状态：V1 可执行底座。** repo-scoped Codex Plugin、三个 Skill、Python Context Core、
-> 公共 Schema、godot-ai capability profile、只读 Godot Dock 和统一回归入口已经建立。真实
-> godot-ai conformance 与完整内容纵切片仍未通过，因此不得宣称成熟 Provider 或产品 MVP 已完成。
+> **当前状态：可亲自试用的内部候选。** Project1 已通过真实 Codex + godot-ai MCP 编辑、生成素材
+> 导入、运行输入、状态/截图、速度 +20% 修改与编辑器重连。Context Core 和只读 Dock 能审核和
+> 展示当前证据。尚待用户自然语言复演与价值确认，不宣称 0.1.0 发布。
 
-**2026-09-04：** Project1 的固定 godot-ai 外部组件与工作区接入配置已准备，等待编辑器启用
-和 Codex 重载后实际验证。请按[手动试用接入](docs/plans/manual-trial-quickstart.md)操作。
-`doctor` 现已区分文件准备与真实连接：静态检查不能返回整套环境就绪。
+**2026-09-04：** 当前速度 240；WASD / 方向键控制角色，触碰金色目标完成收集。
+按[手动试用步骤](docs/plans/manual-trial-quickstart.md)继续开发，或查看[实测报告](docs/plans/manual-trial-verification-2026-09-04.md)。
+`doctor --live` 区分文件准备、当前连接与有证据的历史 conformance；静态检查不返回整套环境就绪。
 
 ## 为什么需要 GameMakerAgent
 
@@ -115,8 +115,8 @@ image generation / edit     godot-ai / MCP / CLI / plugin
 | Evidence Bundle | 关联输入、状态、截图、诊断、Provider 和源 revision | 过期或不完整证据不能通过 |
 | Promotion Manifest | 记录能力从具体项目进入框架的来源、许可和门禁 | 不进行无人工审批的自动自我扩张 |
 
-Production Card、Asset Spec 和 Godot Binding 当前仍是待真实纵切片验证的设计制品，字段
-稳定后才会进入正式 Contract 与 Schema。
+Production Card、Asset Spec、Normalized Asset 和 Godot Binding 已有 Schema 与跨制品审核。
+本轮真实记录可读取和编译；部分为执行后补录，制品先行的独立 Skill 复演仍待用户验收。
 
 ## 典型场景：让 Codex 制作一个新关卡
 
@@ -154,8 +154,8 @@ V1 使用三个不能跳过的门禁：
    Delivery Loop；不复制完整竞品组织。
 2. **真实 Godot：** 安装固定版本 godot-ai 插件，实现受限 Adapter，并在去项目化 Fixture 上
    验证创建/编辑、资源、运行、输入、状态、截图、日志和清理；此时才可称为 Provider 已接入。
-3. **使用场景 MVP：** 完成“讨论 → 查询 → 生成素材 → godot-ai MCP → 创建原生 Godot 项目
-   → 代码基础 → 嵌入素材 → 运行证据 → 审核”的可重复链路。
+3. **使用场景 MVP：** 用户先人工创建原生 Godot 项目，再完成“讨论 → 查询 → 生成素材
+   → godot-ai MCP 修改已有项目 → 嵌入素材 → 运行证据 → 审核”的可重复链路。
 
 MVP 通过后，再在真实 GameJam 内容纵切片中验证复杂制作价值，并将通过门禁的通用部分晋升
 回本仓库。核心参考实现的具体 revision、采用形态和接入时机见
@@ -174,13 +174,15 @@ V1 不追求多引擎、多模型编排、大型 UI、自动生成完整游戏�
 | Framework Lab / Godot Runtime Probe | 已建立，本地 Godot 4.7.2 smoke 通过 |
 | Studio Advisor | 已迁入 Lab，静态用例可解析，等待真实使用验证 |
 | 核心竞品源码 | 固定 Git ref 已完成逐文件 adopt/adapt/reject 清单与 CCGS/GameStudio 去重 |
-| Production Bridge 架构 | 已接受，尚未实现 |
-| Production Card / Asset Spec / Godot Binding | 待理论框架阶段起草与假 Provider 演练 |
-| godot-ai Provider | 源码已拉取；尚未安装、未实现 Adapter、未接入 |
-| Asset Provider | 待实现 |
-| 完整使用场景 MVP | 待理论与真实 Godot 两道门禁通过后执行 |
+| Production Bridge 架构 | Context Core、记录、Schema、Context Pack 已实现并回归 |
+| Production Card / Asset Spec / Godot Binding | 两个假 Provider 矩阵通过，Project1 实际记录审核 PASS |
+| godot-ai Provider | 固定 3.2.4 实际 MCP 编辑/运行、重复修改与重连通过 |
+| Asset Provider | 内置 imagegen 已生成并归一化一张真实角色 PNG，稳定绑定通过 |
+| 内部试玩 | 51 项 Python 回归、4 项真实 Godot 测试；四方向/收集/速度 200→240 已运行取证 |
+| 完整使用场景 MVP / 晋升 | 待用户制品先行自然语言复演与价值确认；不发布 |
 
-当前状态以 [实施计划](docs/plans/framework-evolution-plan.md) 为准。
+当前工程状态以[真实试跑报告](docs/plans/manual-trial-verification-2026-09-04.md)和
+[手动试用里程碑](docs/plans/godot-manual-trial.md)为准；更早的演进表为历史分解。
 
 ## 仓库结构
 
@@ -195,22 +197,22 @@ GameMakerAgent/
 ├─ schemas/            已形成机器可读草案的契约
 ├─ lab/                未晋升的候选、Godot 夹具和固定来源
 ├─ scripts/            框架本地测试入口
-├─ skills/             首个能力通过晋升门禁后创建
-├─ adapters/           首个 Provider 实现通过门禁后创建
-└─ evals/              首个去项目化回归夹具通过门禁后创建
+├─ plugins/            repo-scoped Plugin 与三个候选 Skill
+├─ src/                Python Context Core 与 CLI
+├─ godot/              只读 Dock 与 smoke tests
+├─ adapters/           Provider 声明、安装来源和只读实时探测
+├─ tests/              Core / Schema / CLI / 假 Provider 回归
+└─ Project1/           用户手动创建的本轮通用原生试用夹具
 ```
 
-不存在的稳定目录不会提前创建空骨架。GameJam 前通用底座先在 `lab/` 测试；与玩法、关卡、
-资产和玩家体验相关的能力仍需真实项目验证，再通过 Promotion Gate 进入稳定目录。
+这些实现仍为内部候选。与玩法、关卡、资产和玩家体验相关的能力需通过人工价值确认，
+再经过 Promotion Gate 晋升；不把具体 GameJam 内容混入本仓库。
 
 ## 开始参与 V1 实现
 
 目标仓库：[`Aoye-3/GameMakerAgent`](https://github.com/Aoye-3/GameMakerAgent)
 
-```bash
-git clone https://github.com/Aoye-3/GameMakerAgent.git
-cd GameMakerAgent
-```
+在当前已打开的工作区原地开发并创建分支，不使用 worktree 或另一个项目副本。
 
 同步仓库内 Python 环境并检查预打包开发环境：
 
@@ -218,7 +220,7 @@ cd GameMakerAgent
 $env:UV_CACHE_DIR = "$PWD/.tools/uv/cache"
 $env:UV_PROJECT_ENVIRONMENT = "$PWD/.venv"
 uv sync --locked --all-groups
-uv run --locked gamemaker doctor --project godot
+uv run --locked gamemaker doctor --project Project1/project-1 --live
 ```
 
 运行完整框架回归：

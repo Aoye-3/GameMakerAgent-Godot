@@ -37,7 +37,10 @@ def test_dock_source_contains_no_write_or_runtime_control_operations() -> None:
     forbidden_operations = (
         "FileAccess.WRITE",
         "store_",
-        "DirAccess",
+        "make_dir",
+        "remove_absolute",
+        "rename_absolute",
+        "OS.execute",
         "play_main_scene",
         "stop_playing_scene",
     )

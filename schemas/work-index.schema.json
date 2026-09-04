@@ -7,12 +7,14 @@
   "required": ["schema_version", "project_revision", "works"],
   "properties": {
     "schema_version": { "const": "0.1" }, "project_revision": { "type": "string", "minLength": 1 },
+    "source_files": {"type": "object", "additionalProperties": {"type": "string"}},
     "works": {
       "type": "array",
       "items": {
         "type": "object", "additionalProperties": false,
         "required": ["work_id", "path", "production_card", "status", "updated_at"],
         "properties": {
+          "record_files": {"type": "object", "additionalProperties": {"type": "string"}},
           "work_id": { "type": "string", "minLength": 1 }, "path": { "type": "string", "minLength": 1 },
           "production_card": { "type": "string", "minLength": 1 }, "status": { "enum": ["specified", "implemented", "verified", "failed", "insufficient_evidence"] },
           "verdict": { "enum": ["pass", "fail", "insufficient_evidence"] }, "updated_at": { "type": "string", "format": "date-time" }

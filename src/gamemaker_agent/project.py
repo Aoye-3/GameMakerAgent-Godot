@@ -38,16 +38,24 @@ def project_revision(root: Path) -> str:
     return f"sha256:{digest.hexdigest()}"
 
 
+def source_manifest(root: Path) -> dict[str, str]:
+    root = root.resolve()
+    return {p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+            for p in _source_files(root)}
+
+
 def _parse_project_settings(text: str) -> dict[str, Any]:
     features_match = re.search(r"^config/features=PackedStringArray\((.*)\)$", text, re.M)
     features = re.findall(r'"([^"]+)"', features_match.group(1)) if features_match else []
     main_match = re.search(r'^run/main_scene="([^"]+)"$', text, re.M)
     section = re.search(r'^\[input\]\s*\n(.*?)(?=^\[|\Z)', text, re.M | re.S)
     inputs = sorted(set(re.findall(r'^([^\s"=]+)\s*=\s*\{', section[1], re.M))) if section else []
+    renderer = re.search(r'^renderer/rendering_method="([^"]+)"$', text, re.M)
     return {
         "features": features,
         "main_scene": main_match.group(1) if main_match else None,
         "input_actions": inputs,
+        "renderer": renderer[1] if renderer else None,
     }
 
 

@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1",
+  "binding_id": "player-visual",
+  "production_id": "collect-trial",
+  "asset_id": "player-sprite",
+  "artifact_id": "player-sprite-r1",
+  "resource": {
+    "path": "res://assets/player.png",
+    "type": "Texture2D"
+  },
+  "node": {
+    "scene": "res://scenes/mcp_trial.tscn",
+    "path": "/Trial/Player/Visual",
+    "type": "Sprite2D"
+  },
+  "import_options": {
+    "texture_filter": "linear",
+    "mipmaps": false
+  },
+  "collision": {
+    "node": "/Trial/Player/Collision",
+    "shape": "CircleShape2D",
+    "radius": 16,
+    "pivot": {
+      "x": 0.5,
+      "y": 0.5
+    }
+  },
+  "verification": [
+    "角色可见且不包含实心背景",
+    "居中对齐玩家碰撞体"
+  ]
+}
